@@ -1,0 +1,127 @@
+{
+  "_leia": "Produtos com preço montado no site. O nome precisa ser igual ao da lista da seção Produtos. Produtos que não estão aqui abrem como 'sob orçamento'. Acréscimos: modo 'R$' soma um valor ao pedido, '%' soma uma porcentagem do preço base, 'un' soma o valor por unidade. Mude 'precos_de_exemplo' para false quando os preços forem os reais.",
+  "precos_de_exemplo": true,
+  "whatsapp": "5575981963281",
+  "condicoes": {
+    "prazo": "Produção em até 5 dias úteis após a aprovação da arte.",
+    "entrega": "Retirada na gráfica ou entrega em Feira de Santana (combinada no WhatsApp).",
+    "pagamento": "Pix, cartão ou link de pagamento.",
+    "observacao": "Valor estimado. O preço final é confirmado após a conferência da arte."
+  },
+  "produtos": [
+    {
+      "nome": "Cartão de visita",
+      "descricao": "Formato 9 × 5 cm, impressão colorida de alta definição.",
+      "quantidades": [
+        { "qtd": 250, "preco": 69 },
+        { "qtd": 500, "preco": 89 },
+        { "qtd": 1000, "preco": 129 },
+        { "qtd": 2000, "preco": 219 }
+      ],
+      "opcoes": [
+        { "nome": "Impressão", "tipo": "unica", "itens": [
+          { "nome": "Só frente", "acrescimo": 0 },
+          { "nome": "Frente e verso", "acrescimo": 30, "modo": "%" }
+        ]},
+        { "nome": "Papel", "tipo": "unica", "itens": [
+          { "nome": "Couchê 300g", "acrescimo": 0 },
+          { "nome": "Supremo 350g", "acrescimo": 15, "modo": "%" },
+          { "nome": "Reciclado 240g", "acrescimo": 20, "modo": "%" }
+        ]},
+        { "nome": "Acabamento", "tipo": "multipla", "itens": [
+          { "nome": "Laminação fosca", "acrescimo": 25, "modo": "%" },
+          { "nome": "Verniz localizado", "acrescimo": 40, "modo": "%" },
+          { "nome": "Cantos arredondados", "acrescimo": 25, "modo": "R$" }
+        ]}
+      ]
+    },
+    {
+      "nome": "Folder",
+      "descricao": "Formato A4 aberto, impressão colorida frente e verso.",
+      "quantidades": [
+        { "qtd": 500, "preco": 390 },
+        { "qtd": 1000, "preco": 520 },
+        { "qtd": 2500, "preco": 990 },
+        { "qtd": 5000, "preco": 1690 }
+      ],
+      "opcoes": [
+        { "nome": "Dobra", "tipo": "unica", "itens": [
+          { "nome": "1 dobra", "acrescimo": 0 },
+          { "nome": "2 dobras", "acrescimo": 40, "modo": "R$" }
+        ]},
+        { "nome": "Papel", "tipo": "unica", "itens": [
+          { "nome": "Couchê 115g", "acrescimo": 0 },
+          { "nome": "Couchê 150g", "acrescimo": 18, "modo": "%" }
+        ]},
+        { "nome": "Acabamento", "tipo": "multipla", "itens": [
+          { "nome": "Laminação fosca", "acrescimo": 30, "modo": "%" }
+        ]}
+      ]
+    },
+    {
+      "nome": "Crachá",
+      "descricao": "Cartão em PVC no tamanho padrão, impressão colorida.",
+      "quantidades": [
+        { "qtd": 10, "preco": 120 },
+        { "qtd": 25, "preco": 250 },
+        { "qtd": 50, "preco": 450 },
+        { "qtd": 100, "preco": 800 }
+      ],
+      "opcoes": [
+        { "nome": "Impressão", "tipo": "unica", "itens": [
+          { "nome": "Só frente", "acrescimo": 0 },
+          { "nome": "Frente e verso", "acrescimo": 25, "modo": "%" }
+        ]},
+        { "nome": "Acessórios", "tipo": "multipla", "itens": [
+          { "nome": "Cordão personalizado", "acrescimo": 4.5, "modo": "un" },
+          { "nome": "Presilha jacaré", "acrescimo": 1, "modo": "un" }
+        ]}
+      ]
+    },
+    {
+      "nome": "Adesivo vinil",
+      "descricao": "Vinil branco resistente à água, ideal para embalagens e brindes.",
+      "quantidades": [
+        { "qtd": 100, "preco": 59 },
+        { "qtd": 250, "preco": 99 },
+        { "qtd": 500, "preco": 159 },
+        { "qtd": 1000, "preco": 259 }
+      ],
+      "opcoes": [
+        { "nome": "Tamanho", "tipo": "unica", "itens": [
+          { "nome": "5 × 5 cm", "acrescimo": 0 },
+          { "nome": "7 × 7 cm", "acrescimo": 40, "modo": "%" },
+          { "nome": "10 × 10 cm", "acrescimo": 90, "modo": "%" }
+        ]},
+        { "nome": "Corte", "tipo": "unica", "itens": [
+          { "nome": "Reto", "acrescimo": 0 },
+          { "nome": "Especial (contorno da arte)", "acrescimo": 25, "modo": "%" }
+        ]},
+        { "nome": "Acabamento", "tipo": "multipla", "itens": [
+          { "nome": "Laminação brilho", "acrescimo": 20, "modo": "%" }
+        ]}
+      ]
+    },
+    {
+      "nome": "Banner",
+      "descricao": "Lona 440g com impressão colorida de alta resolução.",
+      "quantidades": [
+        { "qtd": 1, "preco": 45 },
+        { "qtd": 2, "preco": 88 },
+        { "qtd": 5, "preco": 210 },
+        { "qtd": 10, "preco": 400 }
+      ],
+      "opcoes": [
+        { "nome": "Tamanho", "tipo": "unica", "itens": [
+          { "nome": "60 × 90 cm", "acrescimo": 0 },
+          { "nome": "80 × 120 cm", "acrescimo": 35, "modo": "un" },
+          { "nome": "100 × 150 cm", "acrescimo": 70, "modo": "un" }
+        ]},
+        { "nome": "Acabamento", "tipo": "multipla", "itens": [
+          { "nome": "Bastão e cordão", "acrescimo": 8, "modo": "un" },
+          { "nome": "Ilhós", "acrescimo": 5, "modo": "un" }
+        ]}
+      ]
+    }
+  ]
+}
