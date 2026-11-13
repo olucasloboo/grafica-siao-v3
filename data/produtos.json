@@ -35,9 +35,9 @@
       "categoria": "Impresso comercial",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1718670013921-2f144aba173a",
-        "https://images.unsplash.com/photo-1718670013988-c6e3edb92345",
-        "https://images.unsplash.com/photo-1599590984817-0c15f31b1fa5"
+        "/assets/produtos/cartao-de-visita-1.jpg",
+        "/assets/produtos/cartao-de-visita-2.jpg",
+        "/assets/produtos/cartao-de-visita-3.jpg"
       ],
       "descricao": "Formato 9 × 5 cm, impressão colorida de alta definição.",
       "quantidades": [
@@ -124,8 +124,8 @@
       "categoria": "Impresso comercial",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1769029269011-b32f787c288c",
-        "https://images.unsplash.com/photo-1762637119322-0aeb996bc832"
+        "/assets/produtos/cracha-1.jpg",
+        "/assets/produtos/cracha-2.jpg"
       ],
       "descricao": "Cartão em PVC no tamanho padrão, impressão colorida.",
       "quantidades": [
@@ -186,9 +186,9 @@
       "categoria": "Impresso comercial",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1611988615248-5d4f0b9ac31e",
-        "https://images.unsplash.com/photo-1578625155481-7bc40a6481b6",
-        "https://images.unsplash.com/photo-1769596722510-b92780d03424"
+        "/assets/produtos/calendarios-1.jpg",
+        "/assets/produtos/calendarios-2.jpg",
+        "/assets/produtos/calendarios-3.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -199,9 +199,9 @@
       "categoria": "Impresso comercial",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1790345835845-bda0548978b2",
-        "https://images.unsplash.com/photo-1712640365578-fbdf50b55ddc",
-        "https://images.unsplash.com/photo-1422036306541-00138cae4dbc"
+        "/assets/produtos/folder-1.jpg",
+        "/assets/produtos/folder-2.jpg",
+        "/assets/produtos/folder-3.jpg"
       ],
       "descricao": "Formato A4 aberto, impressão colorida frente e verso.",
       "quantidades": [
@@ -273,8 +273,8 @@
       "categoria": "Impresso comercial",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1539355168476-3e8c4a84f447",
-        "https://images.unsplash.com/photo-1654610285929-a1b63280dd60"
+        "/assets/produtos/pastas-1.jpg",
+        "/assets/produtos/pastas-2.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -285,8 +285,8 @@
       "categoria": "Impresso comercial",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1542120926-32f3559e9473",
-        "https://images.unsplash.com/photo-1667201081117-99e1d9aecd76"
+        "/assets/produtos/timbrados-1.jpg",
+        "/assets/produtos/timbrados-2.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -297,8 +297,8 @@
       "categoria": "Impresso comercial",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1766384093125-f00a4eb8a392",
-        "https://images.unsplash.com/photo-1617355405361-29f0f0a3d737"
+        "/assets/produtos/banner-1.jpg",
+        "/assets/produtos/banner-2.jpg"
       ],
       "descricao": "Lona 440g com impressão colorida de alta resolução.",
       "quantidades": [
@@ -364,8 +364,8 @@
       "categoria": "Impresso comercial",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1730198125410-4c19f786fc11",
-        "https://images.unsplash.com/photo-1776437209490-7321478ebb18"
+        "/assets/produtos/faixa-1.jpg",
+        "/assets/produtos/faixa-2.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -376,8 +376,8 @@
       "categoria": "Brindes",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1783099779469-5b02ae272c09",
-        "https://images.unsplash.com/photo-1647559709298-c0e3dcb47092"
+        "/assets/produtos/agenda-1.jpg",
+        "/assets/produtos/agenda-2.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -388,8 +388,8 @@
       "categoria": "Brindes",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1769596722510-b92780d03424",
-        "https://images.unsplash.com/photo-1611988615248-5d4f0b9ac31e"
+        "/assets/produtos/calendarios-3.jpg",
+        "/assets/produtos/calendarios-1.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -400,8 +400,8 @@
       "categoria": "Brindes",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1578625155481-7bc40a6481b6",
-        "https://images.unsplash.com/photo-1770250959829-de36726e99c4"
+        "/assets/produtos/calendarios-2.jpg",
+        "/assets/produtos/calendario-de-parede-2.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -412,8 +412,8 @@
       "categoria": "Brindes",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1629429408209-1f912961dbd8",
-        "https://images.unsplash.com/photo-1631098983935-5363b8e50edb"
+        "/assets/produtos/mousepad-1.jpg",
+        "/assets/produtos/mousepad-2.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -424,8 +424,8 @@
       "categoria": "Brindes",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1531346878377-a5be20888e57",
-        "https://images.unsplash.com/photo-1647559709298-c0e3dcb47092"
+        "/assets/produtos/caderno-1.jpg",
+        "/assets/produtos/agenda-2.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -436,8 +436,8 @@
       "categoria": "Brindes",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1455390582262-044cdead277a",
-        "https://images.unsplash.com/photo-1760720962373-60841d9b2c8a"
+        "/assets/produtos/caneta-1.jpg",
+        "/assets/produtos/caneta-2.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -448,8 +448,8 @@
       "categoria": "Brindes",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1580934174026-8142803ebb5b",
-        "https://images.unsplash.com/photo-1759868937753-34859b641bc1"
+        "/assets/produtos/caixa-de-anote-1.jpg",
+        "/assets/produtos/caixa-de-anote-2.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -460,8 +460,8 @@
       "categoria": "Brindes",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1591195852468-03a01d1375d6",
-        "https://images.unsplash.com/photo-1651761409007-0395097c269d"
+        "/assets/produtos/caderneta-1.jpg",
+        "/assets/produtos/caderneta-2.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -472,9 +472,9 @@
       "categoria": "Embalagens",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1637903921530-f1135c99b8d5",
-        "https://images.unsplash.com/photo-1760565030282-8fb986077e0d",
-        "https://images.unsplash.com/photo-1677753727712-c79ce4c420c1"
+        "/assets/produtos/sacola-1.jpg",
+        "/assets/produtos/sacola-2.jpg",
+        "/assets/produtos/sacola-3.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -485,8 +485,8 @@
       "categoria": "Embalagens",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1616429368325-d5d7542b0ec3",
-        "https://images.unsplash.com/photo-1561715276-a2d087060f1d"
+        "/assets/produtos/saco-delivery-1.jpg",
+        "/assets/produtos/saco-delivery-2.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -497,8 +497,8 @@
       "categoria": "Embalagens",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1638368593249-7cadb261e8b3",
-        "https://images.unsplash.com/photo-1776260486226-11dabfacf5f2"
+        "/assets/produtos/caixa-p-hot-dog-1.jpg",
+        "/assets/produtos/caixa-p-hot-dog-2.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -509,8 +509,8 @@
       "categoria": "Embalagens",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d",
-        "https://images.unsplash.com/photo-1768215610440-fcb9631c7ee2"
+        "/assets/produtos/caixa-p-batata-frita-1.jpg",
+        "/assets/produtos/caixa-p-batata-frita-2.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -521,8 +521,8 @@
       "categoria": "Embalagens",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1615380547239-45634678986c",
-        "https://images.unsplash.com/photo-1635530865047-cdd83986fc55"
+        "/assets/produtos/caixa-p-hamburguer-1.jpg",
+        "/assets/produtos/caixa-p-hamburguer-2.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -533,9 +533,9 @@
       "categoria": "Comunicação visual",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1774803543112-828c3ac44cea",
-        "https://images.unsplash.com/photo-1625768376503-68d2495d78c5",
-        "https://images.unsplash.com/photo-1540651810471-5699df74834f"
+        "/assets/produtos/adesivo-vinil-1.jpg",
+        "/assets/produtos/adesivo-vinil-2.jpg",
+        "/assets/produtos/adesivo-vinil-3.jpg"
       ],
       "descricao": "Vinil branco resistente à água, ideal para embalagens e brindes.",
       "quantidades": [
@@ -612,8 +612,8 @@
       "categoria": "Comunicação visual",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1591844480704-e81058db777f",
-        "https://images.unsplash.com/photo-1685553334511-b77b0a7ca676"
+        "/assets/produtos/adesivo-troca-de-oleo-1.jpg",
+        "/assets/produtos/adesivo-troca-de-oleo-2.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -624,8 +624,8 @@
       "categoria": "Comunicação visual",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1776437209490-7321478ebb18",
-        "https://images.unsplash.com/photo-1730198125410-4c19f786fc11"
+        "/assets/produtos/faixa-2.jpg",
+        "/assets/produtos/faixa-1.jpg"
       ],
       "descricao": "",
       "quantidades": [],
@@ -636,8 +636,8 @@
       "categoria": "Comunicação visual",
       "visivel": true,
       "fotos": [
-        "https://images.unsplash.com/photo-1780361974643-93e06a0b0b0b",
-        "https://images.unsplash.com/photo-1533069027836-fa937181a8ce"
+        "/assets/produtos/lona-com-ilhos-1.jpg",
+        "/assets/produtos/lona-com-ilhos-2.jpg"
       ],
       "descricao": "",
       "quantidades": [],
