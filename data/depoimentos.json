@@ -1,0 +1,22 @@
+{
+  "depoimentos": [
+    {
+      "nome": "Red Velvet Confeitaria",
+      "subtitulo": "Cliente",
+      "texto": "Amei o serviço e o acabamento dos adesivos. Ficou lindo — vocês ganharam uma cliente!",
+      "foto": "/assets/depoimentos/red-velvet-confeitaria.jpg"
+    },
+    {
+      "nome": "Santa Lúcia Laticínios",
+      "subtitulo": "Cliente",
+      "texto": "Trabalho aprovado! Quando o assunto for etiquetas, já sabemos exatamente onde procurar.",
+      "foto": "/assets/depoimentos/santa-lucia-laticinios.jpg"
+    },
+    {
+      "nome": "Home Saúde",
+      "subtitulo": "Parceira há mais de 5 anos",
+      "texto": "Uma parceria de anos. Sem dúvida, a melhor gráfica com quem já trabalhamos.",
+      "foto": "/assets/depoimentos/home-saude.jpg"
+    }
+  ]
+}

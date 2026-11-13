@@ -560,6 +560,10 @@ textarea.om-input{min-height:84px;resize:vertical}
 .shelf-item:hover .sh{width:60%;opacity:.6}
 .shelf-item b{display:block;color:var(--azul-3);font-weight:600;line-height:1.25}
 .shelf-item small{color:var(--grafite);font-size:14px}
+/* livro como imagem PNG (mockup): flutua e se inclina ao passar o mouse */
+.sh-mock{display:block;width:100%;height:230px;object-fit:contain;object-position:center bottom;margin:0 auto 26px;filter:drop-shadow(0 18px 18px rgba(35,42,51,.22));transition:transform .7s var(--out),filter .7s var(--out);user-select:none;-webkit-user-drag:none}
+html.hov .shelf-item.mock:hover .sh-mock,.shelf-item.mock.on .sh-mock{transform:translateY(-14px) rotate(-2deg) scale(1.03);filter:drop-shadow(0 30px 24px rgba(35,42,51,.28))}
+.cv-mock{object-fit:contain!important;background:transparent}
 .sc-pub{font-size:9px;letter-spacing:.2em;text-transform:uppercase;opacity:.8;position:relative;z-index:1}
 .sc-t{font-family:var(--serif);font-size:22px;line-height:1.02;position:relative;z-index:1}
 .sc-a{font-size:11px;opacity:.85;position:relative;z-index:1}
@@ -1321,7 +1325,8 @@ html.hov .shelf-item:hover::before{opacity:1;transform:translate(-50%,0)}
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
-(function(){
+/* conteúdo editável (painel em app.pagescms.org): carrega os arquivos de data/ e só então monta o site */
+window.__siaoMain=function(SITE){
   const doc=document.documentElement, body=document.body;
   body.classList.remove('no-js'); body.classList.add('js');
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1390,25 +1395,22 @@ html.hov .shelf-item:hover::before{opacity:1;transform:translate(-50%,0)}
   }
 
 
-  /* fotos ilustrativas (Unsplash) — trocar pelas fotos reais da gráfica */
-  const U=(id,w=900)=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=75`;
+  /* foto de qualquer área: link completo ou arquivo enviado pelo painel (/assets/...) */
+  const pic=(src,w)=>{src=String(src||'').trim();if(!src)return '';
+    if(/images\.unsplash\.com/.test(src))return src.split('?')[0]+`?auto=format&fit=crop&w=${w||1000}&q=75`;
+    return /^(https?:)?\/\//.test(src)?src:src.replace(/^\/+/,'')};
+  const listOf=(o,k)=>Array.isArray(o&&o[k])?o[k].filter(Boolean):[];
 
-  const gallery=[
-    ['1718670013988-c6e3edb92345','Cartões de visita','impresso','Impresso comercial','tall'],
-    ['1790345835845-bda0548978b2','Folders e catálogos','impresso','Impresso comercial','wide'],
-    ['1637903921530-f1135c99b8d5','Sacolas personalizadas','embalagem','Embalagens',''],
-    ['1648587456176-4969b0124b12','Kit delivery','embalagem','Embalagens',''],
-    ['1610116306796-6fea9f4fae38','Livros','editora','Editora','tall'],
-    ['1783099779469-5b02ae272c09','Agendas','brinde','Brindes',''],
-    ['1549298222-1c31e8915347','Revistas','editora','Editora','wide'],
-    ['1760565030282-8fb986077e0d','Sacolas de papel','embalagem','Embalagens',''],
-    ['1611988615248-5d4f0b9ac31e','Calendários de mesa','brinde','Brindes',''],
-    ['1636719672819-1ccac865f0b4','Embalagens de produto','embalagem','Embalagens','wide'],
-    ['1422036306541-00138cae4dbc','Papéis e cores','impresso','Impresso comercial',''],
-  ];
+  /* PORTFÓLIO: data/portfolio.json */
+  const PF_SIZE={alta:'tall',larga:'wide'},PF_SHORT={'Impresso comercial':'Impressos'};
+  const gallery=listOf(SITE.portfolio,'itens').filter(g=>g.foto).map(g=>{
+    const cat=String(g.categoria||'Outros');return {src:g.foto,t:g.titulo||'',cat,key:cat.normalize('NFD').replace(/[^a-zA-Z]/g,'').toLowerCase(),size:PF_SIZE[String(g.tamanho||'').toLowerCase()]||''}});
+  {const cats=[...new Map(gallery.map(g=>[g.key,g.cat])).entries()];
+   document.querySelector('.pf-filters').innerHTML='<button class="pf-f" aria-pressed="true" data-f="all">Todos</button>'+cats.map(([k,c])=>`<button class="pf-f" aria-pressed="false" data-f="${k}">${PF_SHORT[c]||c}</button>`).join('');}
   const zoomIc='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4M11 8v6M8 11h6"/></svg>';
   const pfGrid=document.getElementById('pfGrid');
-  pfGrid.innerHTML=gallery.map((g,i)=>`<figure class="pf-item ${g[4]}" data-cat="${g[2]}" data-i="${i}" style="--d:${(i%4)*.08}s" tabindex="0"><img src="${U(g[0],g[4]?1100:700)}" alt="${g[1]}" loading="lazy"><span class="zoom">${zoomIc}</span><figcaption><small>${g[3]}</small>${g[1]}</figcaption></figure>`).join('');
+  const escH=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  pfGrid.innerHTML=gallery.map((g,i)=>`<figure class="pf-item ${g.size}" data-cat="${g.key}" data-i="${i}" style="--d:${(i%4)*.08}s" tabindex="0"><img src="${escH(pic(g.src,g.size?1400:1000))}" alt="${escH(g.t)}" loading="lazy"><span class="zoom">${zoomIc}</span><figcaption><small>${escH(g.cat)}</small>${escH(g.t)}</figcaption></figure>`).join('');
 
   document.querySelectorAll('.pf-f').forEach(b=>b.addEventListener('click',()=>{
     document.querySelectorAll('.pf-f').forEach(x=>x.setAttribute('aria-pressed',x===b));
@@ -1422,8 +1424,8 @@ html.hov .shelf-item:hover::before{opacity:1;transform:translate(-50%,0)}
 
   const lb=document.getElementById('lightbox'),lbImg=lb.querySelector('img'),lbCap=lb.querySelector('figcaption');let lbI=0;
   const visible=()=>[...pfGrid.querySelectorAll('.pf-item:not(.hide)')];
-  function openLb(i){const v=visible();lbI=(i+v.length)%v.length;const g=gallery[+v[lbI].dataset.i];
-    lbImg.src=U(g[0],1600);lbImg.alt=g[1];lbCap.textContent=g[1];lb.classList.add('open');lb.setAttribute('aria-hidden','false');if(lenis)lenis.stop()}
+  function openLb(i){const v=visible();if(!v.length)return;lbI=(i+v.length)%v.length;const g=gallery[+v[lbI].dataset.i];
+    lbImg.src=pic(g.src,1600);lbImg.alt=g.t;lbCap.textContent=g.t;lb.classList.add('open');lb.setAttribute('aria-hidden','false');if(lenis)lenis.stop()}
   function closeLb(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');if(lenis)lenis.start()}
   pfGrid.addEventListener('click',e=>{const it=e.target.closest('.pf-item');if(it)openLb(visible().indexOf(it))});
   pfGrid.addEventListener('keydown',e=>{const it=e.target.closest('.pf-item');if(it&&e.key==='Enter')openLb(visible().indexOf(it))});
@@ -1433,28 +1435,14 @@ html.hov .shelf-item:hover::before{opacity:1;transform:translate(-50%,0)}
   lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
   addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')openLb(lbI-1);if(e.key==='ArrowRight')openLb(lbI+1)});
 
-  /* slideshow "Quem somos": produção, equipe e produtos (fotos do Unsplash são provisórias) */
-  const WX='https://static.wixstatic.com/media/7c1197_';
-  const showA=[
-    [WX+'2e5f2f406a74415ca8bc6c35783cabaf~mv2.jpg','Produção','Parque gráfico da Gráfica Sião'],
-    [U('1663433567177-9f94be0bff4c',1000),'Equipe','Profissional operando a produção'],
-    [U('1790345835845-bda0548978b2',1000),'Produtos','Folder impresso'],
-    [U('1758270804188-8ca0b6d254bc',1000),'Produção','Impressão em bobina'],
-    [U('1643216674491-33878507b402',1000),'Equipe','Equipe na impressão'],
-    [U('1637903921530-f1135c99b8d5',1000),'Produtos','Sacolas personalizadas'],
-    [U('1693031630369-bd429a57f115',1000),'Produção','Escala de cores'],
-  ];
-  const showB=[
-    [WX+'a65e538372f54ed99d3a4f03b7177d42~mv2.jpg','Equipe','Equipe da Gráfica Sião'],
-    [U('1718670013921-2f144aba173a',600),'Produtos','Cartões de visita'],
-    [U('1583067072844-7f77718f8be8',600),'Equipe','Acabamento manual'],
-    [U('1595246135406-803418233494',600),'Produtos','Embalagens kraft'],
-    [U('1598299803204-b73796f43289',600),'Equipe','Equipe trabalhando'],
-    [U('1783099779469-5b02ae272c09',600),'Produtos','Agendas personalizadas'],
-  ];
+  /* slideshow "Quem somos": data/quem-somos.json (moldura grande e moldura pequena) */
+  const toShow=k=>listOf(SITE.quem,k).filter(s=>s.foto).map(s=>[pic(s.foto,k==='moldura_grande'?1100:700),'',s.descricao||'Gráfica Sião']);
+  const showA=toShow('moldura_grande'),showB=toShow('moldura_pequena');
   function slideshow(el,list,offset,period){
-    el.innerHTML=list.map((s,i)=>`<img class="sl${i?'':' on'}" src="${s[0]}" alt="${s[2]}" decoding="async">`).join('')
+    if(!list.length)return; /* sem fotos no painel: mantém a foto fixa do HTML */
+    el.innerHTML=list.map((s,i)=>`<img class="sl${i?'':' on'}" src="${s[0]}" alt="${String(s[2]).replace(/"/g,'&quot;')}" decoding="async">`).join('')
       +`<span class="ph-wipe"></span><span class="ph-bar" style="--t:${period}ms"><i></i></span>`;
+    if(list.length<2)return; /* uma foto só: não gira */
     const imgs=[...el.querySelectorAll('.sl')],wipe=el.querySelector('.ph-wipe'),bar=el.querySelector('.ph-bar i');
     let i=0,timer=null;
     const runBar=(d=period)=>{bar.style.setProperty('--t',d+'ms');bar.classList.remove('run');bar.offsetWidth;bar.classList.add('run')};
@@ -1478,14 +1466,11 @@ html.hov .shelf-item:hover::before{opacity:1;transform:translate(-50%,0)}
   slideshow(document.querySelector('.ph-1'),showA,5200,5200);
   slideshow(document.querySelector('.ph-2'),showB,2600,5200);
 
-  const W='https://static.wixstatic.com/media/7c1197_'; /* fotos do site antigo (Wix) */
-  const testis=[
-    ['Red Velvet Confeitaria','Cliente','Amei o serviço e o acabamento dos adesivos. Ficou lindo — vocês ganharam uma cliente!','4ce363f5cb5f4ab9ae8eaea98b898ec8'],
-    ['Santa Lúcia Laticínios','Cliente','Trabalho aprovado! Quando o assunto for etiquetas, já sabemos exatamente onde procurar.','4353425b76414ab18ba36fb307f387aa'],
-    ['Home Saúde','Parceira há mais de 5 anos','Uma parceria de anos. Sem dúvida, a melhor gráfica com quem já trabalhamos.','74f343b4eda940a886719080ffb3bf1a'],
-  ];
+  /* DEPOIMENTOS: data/depoimentos.json */
+  const testis=listOf(SITE.depoimentos,'depoimentos').filter(t=>t.texto).map(t=>[t.nome||'',t.subtitulo||'',t.texto,t.foto||'']);
   const tSlides=document.getElementById('tSlides');
-  tSlides.innerHTML=testis.map((t,i)=>`<div class="t-slide${i?'':' active'}"><div class="t-photo"><img loading="lazy" src="${W}${t[3]}~mv2.jpg/v1/fill/w_480,h_480,al_c,q_80/img.jpg" alt="${t[0]}" onerror="this.remove()"></div><div><p class="t-quote">“${t[2].split(' ').map((w,j)=>`<span class="w" style="--i:${j}">${w}</span>`).join(' ')}”</p><p class="t-who">${t[0]}<small>${t[1]}</small></p></div></div>`).join('');
+  const escT=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  tSlides.innerHTML=testis.map((t,i)=>`<div class="t-slide${i?'':' active'}"><div class="t-photo">${t[3]?`<img loading="lazy" src="${escT(pic(t[3],480))}" alt="${escT(t[0])}" onerror="this.remove()">`:''}</div><div><p class="t-quote">“${escT(t[2]).split(' ').map((w,j)=>`<span class="w" style="--i:${j}">${w}</span>`).join(' ')}”</p><p class="t-who">${escT(t[0])}<small>${escT(t[1])}</small></p></div></div>`).join('');
 
   /* split headlines into lines */
   function splitLines(el){
@@ -1856,18 +1841,26 @@ html.hov .shelf-item:hover::before{opacity:1;transform:translate(-50%,0)}
   document.getElementById('bkReplay').addEventListener('click',e=>{e.stopPropagation();bkReset()});
   addEventListener('resize',()=>{if(!bStage.classList.contains('burst'))bkAim()});
 
-  /* estante: capas de exemplo (fictícias). Para usar a capa real, preencha "capa" com o caminho da imagem, ex.: 'assets/livros/meu-livro.jpg' */
-  const livros=[
-    {t:'Raízes do Sertão',a:'Ana Lima',c1:'#C2603A',c2:'#6E2A15',sp:'#5A2311',capa:''},
-    {t:'Feira em Movimento',a:'Carlos Mendes',c1:'#2c5797',c2:'#0F2445',sp:'#173663',capa:'',alt:1},
-    {t:'Poemas de Quintal',a:'Júlia Rocha',c1:'#5E8A68',c2:'#24402C',sp:'#1F3826',capa:''},
-    {t:'Histórias da Princesa do Sertão',a:'Marcos Oliveira',c1:'#C23A49',c2:'#6B1520',sp:'#5C121B',capa:'',alt:1},
-    {t:'Manual do Pequeno Empreendedor',a:'Equipe Sião',c1:'#6E6B66',c2:'#2E2D2B',sp:'#262523',capa:''},
-    {t:'Caderno de Receitas da Vó',a:'Dona Lia',c1:'#D4A13A',c2:'#7A5512',sp:'#694910',capa:'',alt:1},
-    {t:'Crônicas de Feira',a:'Rita Santos',c1:'#3C7C8C',c2:'#163A44',sp:'#12313A',capa:''},
-  ];
+  /* fotos que saem do livro aberto: data/editora.json -> fotos_livro_aberto (até 5, posições fixas) */
+  listOf(SITE.editora,'fotos_livro_aberto').filter(p=>p.foto).slice(0,5).forEach((p,k)=>{
+    const fig=document.querySelectorAll('#bkPhotos .bk-ph')[k];if(!fig)return;
+    const im=fig.querySelector('img');im.src=pic(p.foto,900);im.alt=p.descricao||'Livro da Sião Editora';
+  });
+
+  /* estante: data/editora.json -> livros. Com "mockup" (PNG do livro), mostra a imagem; sem, desenha uma capa provisória */
+  const SHELF_COLORS=[['#C2603A','#6E2A15','#5A2311'],['#2c5797','#0F2445','#173663'],['#5E8A68','#24402C','#1F3826'],['#C23A49','#6B1520','#5C121B'],['#6E6B66','#2E2D2B','#262523'],['#D4A13A','#7A5512','#694910'],['#3C7C8C','#163A44','#12313A']];
+  const escB=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const livrosData=listOf(SITE.editora,'livros').filter(l=>l.titulo).map((l,i)=>{const c=SHELF_COLORS[i%SHELF_COLORS.length];
+    return {t:escB(l.titulo),a:escB(l.autor),d:l.descricao||'',mock:l.mockup?pic(l.mockup,700):'',fotos:(Array.isArray(l.fotos)?l.fotos:[]).filter(Boolean).map(u=>pic(u,1100)),c1:c[0],c2:c[1],sp:c[2],capa:'',alt:i%2}});
+  const livros=livrosData;
   const shelf=document.getElementById('shelf');
-  shelf.innerHTML=livros.map((l,i)=>`
+  if(!livros.length)document.querySelector('.shelf-wrap').hidden=true;
+  shelf.innerHTML=livros.map((l,i)=>l.mock?`
+    <div class="shelf-item mock" style="--i:${i}" tabindex="0">
+      <img class="sh-mock" src="${escB(l.mock)}" alt="${l.t}" loading="lazy" draggable="false">
+      <span class="sh"></span>
+      <b>${l.t}</b><small>${l.a}</small>
+    </div>`:`
     <div class="shelf-item" style="--i:${i}" tabindex="0">
       <div class="b3d" style="--c1:${l.c1};--c2:${l.c2};--sp:${l.sp}">
         <div class="front"><div class="cover">${l.capa?`<img class="cv-img" src="${l.capa}" alt="Capa de ${l.t}">`:
@@ -1877,27 +1870,21 @@ html.hov .shelf-item:hover::before{opacity:1;transform:translate(-50%,0)}
       <span class="sh"></span>
       <b>${l.t}</b><small>${l.a}</small>
     </div>`).join('');
-  const step=()=>shelf.querySelector('.shelf-item').offsetWidth*2+60;
+  const step=()=>{const it=shelf.querySelector('.shelf-item');return it?it.offsetWidth*2+60:300};
   document.getElementById('shelfPrev').onclick=()=>shelf.scrollBy({left:-step()});
   document.getElementById('shelfNext').onclick=()=>shelf.scrollBy({left:step()});
-  /* janela do livro: capa + fotos internas. Para usar fotos reais, preencha "fotos" de cada livro com os caminhos das imagens */
-  const bookPool=['1712640365578-fbdf50b55ddc','1543002588-bfa74002ed7e','1610116306796-6fea9f4fae38','1508169351866-777fc0047ac5','1517770413964-df8ca61194a6','1497633762265-9d179a990aa6','1591951425328-48c1fe7179cd','1527176930608-09cb256ab504'];
-  const descs=['Contos sobre a vida, a fé e a memória do interior baiano.','Retratos e histórias de quem faz a feira acontecer todos os dias.','Poemas curtos sobre a casa, a família e as pequenas alegrias.','Crônicas e lendas que ajudam a contar a história de Feira de Santana.','Guia prático para quem quer abrir e organizar o próprio negócio.','Receitas de família reunidas e ilustradas, de geração em geração.','Crônicas do cotidiano, do centro da cidade aos bairros.'];
-  livros.forEach((l,i)=>{
-    l.d=l.d||descs[i]||'';
-    l.fotos=l.fotos&&l.fotos.length?l.fotos:[0,1,2,3].map(k=>`https://images.unsplash.com/photo-${bookPool[(i*2+k)%bookPool.length]}?auto=format&fit=crop&w=1100&q=78`);
-  });
+  /* janela do livro: capa (ou mockup) + fotos do livro cadastradas no painel */
   const bm=document.getElementById('bookModal'),bmStage=document.getElementById('bmStage'),bmThumbs=document.getElementById('bmThumbs'),bmCount=document.getElementById('bmCount');
   let bmI=0,bmN=0,bmBusy=false;
-  const coverHTML=l=>l.capa?`<img class="cv-img" src="${l.capa}" alt="Capa de ${l.t}">`:`<span class="sc-deco${l.alt?' alt':''}"></span><span class="sc-pub">Sião Editora</span><span class="sc-t">${l.t}</span><span class="sc-a">${l.a}</span>`;
+  const coverHTML=l=>l.mock?`<img class="cv-img cv-mock" src="${escB(l.mock)}" alt="${l.t}">`:l.capa?`<img class="cv-img" src="${l.capa}" alt="Capa de ${l.t}">`:`<span class="sc-deco${l.alt?' alt':''}"></span><span class="sc-pub">Sião Editora</span><span class="sc-t">${l.t}</span><span class="sc-a">${l.a}</span>`;
   function bmOpen(i){
     const l=livros[i];
     bm.querySelector('.bm-panel').style.cssText=`--c1:${l.c1};--c2:${l.c2}`;
-    document.getElementById('bmTitle').textContent=l.t;
-    document.getElementById('bmAuthor').textContent=l.a;
-    document.getElementById('bmDesc').textContent=l.d;
-    bmStage.innerHTML=`<div class="bm-slide cover-slide on"><div class="bm-flat">${coverHTML(l)}</div></div>`+l.fotos.map((f,k)=>`<div class="bm-slide"><img src="${f}" alt="${l.t} — foto ${k+1}"></div>`).join('');
-    bmThumbs.innerHTML=`<button class="on" aria-label="Capa"><span class="th-cover"></span></button>`+l.fotos.map((f,k)=>`<button aria-label="Foto ${k+1}"><img src="${f.replace('w=1100','w=160')}" alt=""></button>`).join('');
+    document.getElementById('bmTitle').innerHTML=l.t;
+    document.getElementById('bmAuthor').innerHTML=l.a;
+    document.getElementById('bmDesc').textContent=String(l.d);
+    bmStage.innerHTML=`<div class="bm-slide cover-slide on"><div class="bm-flat">${coverHTML(l)}</div></div>`+l.fotos.map((f,k)=>`<div class="bm-slide"><img src="${escB(f)}" alt="${l.t} — foto ${k+1}"></div>`).join('');
+    bmThumbs.innerHTML=`<button class="on" aria-label="Capa">${l.mock?`<img src="${escB(l.mock)}" alt="" style="object-fit:contain">`:'<span class="th-cover"></span>'}</button>`+l.fotos.map((f,k)=>`<button aria-label="Foto ${k+1}"><img src="${escB(f.replace('w=1100','w=160'))}" alt=""></button>`).join('');
     bmN=l.fotos.length+1;bmI=0;bmUpdate();
     bm.classList.add('open');bm.setAttribute('aria-hidden','false');if(lenis)lenis.stop();
   }
@@ -1929,7 +1916,8 @@ html.hov .shelf-item:hover::before{opacity:1;transform:translate(-50%,0)}
 
   /* testimonials (com swipe no celular) */
   const slides=[...tSlides.children],bar=document.getElementById('tBar');let ti=0,timer;
-  function go(n){slides[ti].classList.remove('active');ti=(n+slides.length)%slides.length;slides[ti].classList.add('active');
+  if(!slides.length)document.querySelector('.testi').hidden=true;
+  function go(n){if(!slides.length)return;slides[ti].classList.remove('active');ti=(n+slides.length)%slides.length;slides[ti].classList.add('active');
     bar.classList.remove('run');bar.offsetWidth;bar.classList.add('run');clearTimeout(timer);timer=setTimeout(()=>go(ti+1),7000)}
   document.getElementById('tPrev').onclick=()=>go(ti-1);
   document.getElementById('tNext').onclick=()=>go(ti+1);
@@ -1944,6 +1932,13 @@ html.hov .shelf-item:hover::before{opacity:1;transform:translate(-50%,0)}
   const open=d>=1&&d<=5&&((m>=480&&m<720)||(m>=780&&m<1020));
   document.getElementById('openDot').classList.toggle('closed',!open);
   document.getElementById('openTxt').textContent=open?'Aberto':'Fechado';
+};
+(function(){
+  const files={quem:'quem-somos',portfolio:'portfolio',editora:'editora',depoimentos:'depoimentos'};
+  const get=f=>fetch('data/'+f+'.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).catch(()=>({}));
+  let started=false;const go=d=>{if(started)return;started=true;window.__siaoMain(d)};
+  Promise.all(Object.values(files).map(get)).then(a=>{const d={};Object.keys(files).forEach((k,i)=>d[k]=a[i]||{});go(d)});
+  setTimeout(()=>go({quem:{},portfolio:{},editora:{},depoimentos:{}}),4000); /* se a internet travar, monta assim mesmo */
 })();
 </script>
 </body>

@@ -1,0 +1,58 @@
+{
+  "moldura_grande": [
+    {
+      "foto": "/assets/quem-somos/grande-1-parque-grafico-da-grafica-siao.jpg",
+      "descricao": "Parque gráfico da Gráfica Sião"
+    },
+    {
+      "foto": "/assets/quem-somos/grande-2-profissional-operando-a-producao.jpg",
+      "descricao": "Profissional operando a produção"
+    },
+    {
+      "foto": "/assets/quem-somos/grande-3-folder-impresso.jpg",
+      "descricao": "Folder impresso"
+    },
+    {
+      "foto": "/assets/quem-somos/grande-4-impressao-em-bobina.jpg",
+      "descricao": "Impressão em bobina"
+    },
+    {
+      "foto": "/assets/quem-somos/grande-5-equipe-na-impressao.jpg",
+      "descricao": "Equipe na impressão"
+    },
+    {
+      "foto": "/assets/quem-somos/grande-6-sacolas-personalizadas.jpg",
+      "descricao": "Sacolas personalizadas"
+    },
+    {
+      "foto": "/assets/quem-somos/grande-7-escala-de-cores.jpg",
+      "descricao": "Escala de cores"
+    }
+  ],
+  "moldura_pequena": [
+    {
+      "foto": "/assets/quem-somos/pequena-1-equipe-da-grafica-siao.jpg",
+      "descricao": "Equipe da Gráfica Sião"
+    },
+    {
+      "foto": "/assets/quem-somos/pequena-2-cartoes-de-visita.jpg",
+      "descricao": "Cartões de visita"
+    },
+    {
+      "foto": "/assets/quem-somos/pequena-3-acabamento-manual.jpg",
+      "descricao": "Acabamento manual"
+    },
+    {
+      "foto": "/assets/quem-somos/pequena-4-embalagens-kraft.jpg",
+      "descricao": "Embalagens kraft"
+    },
+    {
+      "foto": "/assets/quem-somos/pequena-5-equipe-trabalhando.jpg",
+      "descricao": "Equipe trabalhando"
+    },
+    {
+      "foto": "/assets/quem-somos/pequena-6-agendas-personalizadas.jpg",
+      "descricao": "Agendas personalizadas"
+    }
+  ]
+}

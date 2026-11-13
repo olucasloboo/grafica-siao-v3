@@ -3,13 +3,41 @@
 #   Produtos            -> data/produtos.json
 #   Categorias (abas)   -> data/categorias.json
 #   Pedido e WhatsApp   -> data/pedido.json
-# O site lê esses arquivos para montar a seção Produtos e a janela de pedido.
+#   Quem somos (fotos)  -> data/quem-somos.json
+#   Portfólio           -> data/portfolio.json
+#   Editora (livros)    -> data/editora.json
+#   Depoimentos         -> data/depoimentos.json
+# O site lê esses arquivos para montar cada área.
 
 media:
   - name: fotos
     label: Fotos dos produtos
     input: assets/produtos
     output: /assets/produtos
+    extensions: [jpg, jpeg, png, webp]
+    rename: safe
+  - name: quem-somos
+    label: Fotos de Quem somos
+    input: assets/quem-somos
+    output: /assets/quem-somos
+    extensions: [jpg, jpeg, png, webp]
+    rename: safe
+  - name: portfolio
+    label: Fotos do Portfólio
+    input: assets/portfolio
+    output: /assets/portfolio
+    extensions: [jpg, jpeg, png, webp]
+    rename: safe
+  - name: editora
+    label: Fotos e mockups da Editora
+    input: assets/editora
+    output: /assets/editora
+    extensions: [jpg, jpeg, png, webp]
+    rename: safe
+  - name: depoimentos
+    label: Fotos dos depoimentos
+    input: assets/depoimentos
+    output: /assets/depoimentos
     extensions: [jpg, jpeg, png, webp]
     rename: safe
 
@@ -169,3 +197,172 @@ content:
           - name: observacao
             label: Aviso abaixo do valor
             type: string
+
+  # ---------- QUEM SOMOS ----------
+  - name: quem-somos
+    label: Quem somos (fotos)
+    type: file
+    path: data/quem-somos.json
+    format: json
+    fields:
+      - name: moldura_grande
+        label: Moldura grande (troca a cada ~5 s)
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{descricao}"
+        fields:
+          - name: foto
+            label: Foto
+            type: image
+            required: true
+            options:
+              media: quem-somos
+          - name: descricao
+            label: O que aparece na foto
+            type: string
+      - name: moldura_pequena
+        label: Moldura pequena (troca a cada ~5 s)
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{descricao}"
+        fields:
+          - name: foto
+            label: Foto
+            type: image
+            required: true
+            options:
+              media: quem-somos
+          - name: descricao
+            label: O que aparece na foto
+            type: string
+
+  # ---------- PORTFÓLIO ----------
+  - name: portfolio
+    label: Portfólio
+    type: file
+    path: data/portfolio.json
+    format: json
+    fields:
+      - name: itens
+        label: Fotos do portfólio (a ordem aqui é a ordem no site)
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{titulo} · {categoria}"
+        fields:
+          - name: titulo
+            label: Título
+            type: string
+            required: true
+          - name: categoria
+            label: Categoria (vira o filtro)
+            type: select
+            required: true
+            options:
+              values: [Impresso comercial, Embalagens, Brindes, Editora]
+          - name: tamanho
+            label: Tamanho na grade
+            type: select
+            options:
+              values: [Normal, Alta, Larga]
+          - name: foto
+            label: Foto
+            type: image
+            required: true
+            options:
+              media: portfolio
+
+  # ---------- EDITORA ----------
+  - name: editora
+    label: Editora (livros)
+    type: file
+    path: data/editora.json
+    format: json
+    fields:
+      - name: livros
+        label: Livros publicados (estante)
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{titulo} · {autor}"
+        fields:
+          - name: titulo
+            label: Título
+            type: string
+            required: true
+          - name: autor
+            label: Autor
+            type: string
+          - name: mockup
+            label: Mockup do livro (PNG com fundo transparente)
+            description: Enquanto vazio, o site mostra uma capa provisória desenhada.
+            type: image
+            options:
+              media: editora
+          - name: descricao
+            label: Descrição (aparece ao abrir o livro)
+            type: text
+          - name: fotos
+            label: Fotos do livro (aparecem ao abrir o livro)
+            type: image
+            options:
+              media: editora
+              multiple:
+                max: 8
+      - name: fotos_livro_aberto
+        label: Fotos que saem do livro aberto (até 5)
+        type: object
+        list:
+          max: 5
+          collapsible:
+            collapsed: true
+            summary: "{descricao}"
+        fields:
+          - name: foto
+            label: Foto
+            type: image
+            required: true
+            options:
+              media: editora
+          - name: descricao
+            label: O que aparece na foto
+            type: string
+
+  # ---------- DEPOIMENTOS ----------
+  - name: depoimentos
+    label: Depoimentos
+    type: file
+    path: data/depoimentos.json
+    format: json
+    fields:
+      - name: depoimentos
+        label: Depoimentos
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{nome}"
+        fields:
+          - name: nome
+            label: Nome do cliente ou empresa
+            type: string
+            required: true
+          - name: subtitulo
+            label: Linha abaixo do nome
+            description: Ex. Cliente, Parceira há mais de 5 anos.
+            type: string
+          - name: texto
+            label: Depoimento
+            type: text
+            required: true
+          - name: foto
+            label: Foto ou logo (quadrada)
+            type: image
+            options:
+              media: depoimentos

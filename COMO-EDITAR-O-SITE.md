@@ -1,6 +1,6 @@
-# Como adicionar e editar produtos
+# Como editar o site pelo painel
 
-Os produtos do site são editados por um painel, sem mexer em código.
+Os produtos e outras áreas do site são editados por um painel, sem mexer em código.
 O painel é o **Pages CMS**: <https://app.pagescms.org>
 
 O painel tem três telas no menu: **Produtos**, **Categorias (abas)** e **Pedido e WhatsApp**.
@@ -65,6 +65,19 @@ Em **Opções**, crie um grupo para cada escolha do cliente:
 - **Pedido e WhatsApp** (tela própria no menu): condições de prazo, entrega, pagamento e o aviso que aparecem na janela de pedido.
   - **WhatsApp que recebe os pedidos**: só números, com 55 e DDD.
   - **Os preços ainda são de exemplo**: desmarque quando os preços forem os reais. Enquanto marcado, a janela de pedido mostra o aviso "Preços de exemplo".
+
+## Outras áreas do site
+
+Além dos produtos, o menu do painel tem:
+
+- **Quem somos (fotos)**: as fotos das duas molduras da seção Quem somos (a grande e a pequena). Cada moldura troca de foto sozinha. Com uma foto só, ela fica parada.
+- **Portfólio**: cada item é uma foto da grade, com título, categoria (que vira o botão de filtro) e tamanho na grade: *Normal*, *Alta* (ocupa duas linhas) ou *Larga* (ocupa duas colunas).
+- **Editora (livros)**:
+  - **Livros publicados**: título, autor, descrição, fotos do livro e o **mockup**. O mockup é a imagem do livro em PNG com fundo transparente; ela aparece na estante. Enquanto não houver mockup, o site desenha uma capa provisória com o título.
+  - **Fotos que saem do livro aberto**: as até 5 fotos que aparecem quando o visitante clica no livro grande.
+- **Depoimentos**: nome, linha abaixo do nome, o texto e a foto ou logo (de preferência quadrada).
+
+As mesmas regras de foto valem aqui: até uns 3 MB por foto.
 
 ## Se algo der errado
 

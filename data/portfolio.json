@@ -1,0 +1,70 @@
+{
+  "itens": [
+    {
+      "titulo": "Cartões de visita",
+      "categoria": "Impresso comercial",
+      "tamanho": "Alta",
+      "foto": "/assets/portfolio/cartoes-de-visita.jpg"
+    },
+    {
+      "titulo": "Folders e catálogos",
+      "categoria": "Impresso comercial",
+      "tamanho": "Larga",
+      "foto": "/assets/portfolio/folders-e-catalogos.jpg"
+    },
+    {
+      "titulo": "Sacolas personalizadas",
+      "categoria": "Embalagens",
+      "tamanho": "Normal",
+      "foto": "/assets/portfolio/sacolas-personalizadas.jpg"
+    },
+    {
+      "titulo": "Kit delivery",
+      "categoria": "Embalagens",
+      "tamanho": "Normal",
+      "foto": "/assets/portfolio/kit-delivery.jpg"
+    },
+    {
+      "titulo": "Livros",
+      "categoria": "Editora",
+      "tamanho": "Alta",
+      "foto": "/assets/portfolio/livros.jpg"
+    },
+    {
+      "titulo": "Agendas",
+      "categoria": "Brindes",
+      "tamanho": "Normal",
+      "foto": "/assets/portfolio/agendas.jpg"
+    },
+    {
+      "titulo": "Revistas",
+      "categoria": "Editora",
+      "tamanho": "Larga",
+      "foto": "/assets/portfolio/revistas.jpg"
+    },
+    {
+      "titulo": "Sacolas de papel",
+      "categoria": "Embalagens",
+      "tamanho": "Normal",
+      "foto": "/assets/portfolio/sacolas-de-papel.jpg"
+    },
+    {
+      "titulo": "Calendários de mesa",
+      "categoria": "Brindes",
+      "tamanho": "Normal",
+      "foto": "/assets/portfolio/calendarios-de-mesa.jpg"
+    },
+    {
+      "titulo": "Embalagens de produto",
+      "categoria": "Embalagens",
+      "tamanho": "Larga",
+      "foto": "/assets/portfolio/embalagens-de-produto.jpg"
+    },
+    {
+      "titulo": "Papéis e cores",
+      "categoria": "Impresso comercial",
+      "tamanho": "Normal",
+      "foto": "/assets/portfolio/papeis-e-cores.jpg"
+    }
+  ]
+}

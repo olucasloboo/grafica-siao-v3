@@ -1,0 +1,110 @@
+{
+  "fotos_livro_aberto": [
+    {
+      "foto": "/assets/editora/livro-aberto-1.jpg",
+      "descricao": "Livros abertos"
+    },
+    {
+      "foto": "/assets/editora/livro-aberto-2.jpg",
+      "descricao": "Livro aberto sobre pilha de livros"
+    },
+    {
+      "foto": "/assets/editora/livro-aberto-3.jpg",
+      "descricao": "Livros"
+    },
+    {
+      "foto": "/assets/editora/livro-aberto-4.jpg",
+      "descricao": "Livro aberto"
+    },
+    {
+      "foto": "/assets/editora/livro-aberto-5.jpg",
+      "descricao": "Livro aberto sobre a mesa"
+    }
+  ],
+  "livros": [
+    {
+      "titulo": "Raízes do Sertão",
+      "autor": "Ana Lima",
+      "descricao": "Contos sobre a vida, a fé e a memória do interior baiano.",
+      "mockup": "",
+      "fotos": [
+        "/assets/editora/foto-livro-1.jpg",
+        "/assets/editora/foto-livro-2.jpg",
+        "/assets/editora/foto-livro-3.jpg",
+        "/assets/editora/foto-livro-4.jpg"
+      ]
+    },
+    {
+      "titulo": "Feira em Movimento",
+      "autor": "Carlos Mendes",
+      "descricao": "Retratos e histórias de quem faz a feira acontecer todos os dias.",
+      "mockup": "",
+      "fotos": [
+        "/assets/editora/foto-livro-3.jpg",
+        "/assets/editora/foto-livro-4.jpg",
+        "/assets/editora/foto-livro-5.jpg",
+        "/assets/editora/foto-livro-6.jpg"
+      ]
+    },
+    {
+      "titulo": "Poemas de Quintal",
+      "autor": "Júlia Rocha",
+      "descricao": "Poemas curtos sobre a casa, a família e as pequenas alegrias.",
+      "mockup": "",
+      "fotos": [
+        "/assets/editora/foto-livro-5.jpg",
+        "/assets/editora/foto-livro-6.jpg",
+        "/assets/editora/foto-livro-7.jpg",
+        "/assets/editora/foto-livro-8.jpg"
+      ]
+    },
+    {
+      "titulo": "Histórias da Princesa do Sertão",
+      "autor": "Marcos Oliveira",
+      "descricao": "Crônicas e lendas que ajudam a contar a história de Feira de Santana.",
+      "mockup": "",
+      "fotos": [
+        "/assets/editora/foto-livro-7.jpg",
+        "/assets/editora/foto-livro-8.jpg",
+        "/assets/editora/foto-livro-1.jpg",
+        "/assets/editora/foto-livro-2.jpg"
+      ]
+    },
+    {
+      "titulo": "Manual do Pequeno Empreendedor",
+      "autor": "Equipe Sião",
+      "descricao": "Guia prático para quem quer abrir e organizar o próprio negócio.",
+      "mockup": "",
+      "fotos": [
+        "/assets/editora/foto-livro-1.jpg",
+        "/assets/editora/foto-livro-2.jpg",
+        "/assets/editora/foto-livro-3.jpg",
+        "/assets/editora/foto-livro-4.jpg"
+      ]
+    },
+    {
+      "titulo": "Caderno de Receitas da Vó",
+      "autor": "Dona Lia",
+      "descricao": "Receitas de família reunidas e ilustradas, de geração em geração.",
+      "mockup": "",
+      "fotos": [
+        "/assets/editora/foto-livro-3.jpg",
+        "/assets/editora/foto-livro-4.jpg",
+        "/assets/editora/foto-livro-5.jpg",
+        "/assets/editora/foto-livro-6.jpg"
+      ]
+    },
+    {
+      "titulo": "Crônicas de Feira",
+      "autor": "Rita Santos",
+      "descricao": "Crônicas do cotidiano, do centro da cidade aos bairros.",
+      "mockup": "",
+      "fotos": [
+        "/assets/editora/foto-livro-5.jpg",
+        "/assets/editora/foto-livro-6.jpg",
+        "/assets/editora/foto-livro-7.jpg",
+        "/assets/editora/foto-livro-8.jpg"
+      ]
+    }
+  ]
+}
