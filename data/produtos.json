@@ -1,48 +1,19 @@
 {
-  "whatsapp": "5575981963281",
-  "precos_de_exemplo": true,
-  "condicoes": {
-    "prazo": "Produção em até 5 dias úteis após a aprovação da arte.",
-    "entrega": "Retirada na gráfica ou entrega em Feira de Santana (combinada no WhatsApp).",
-    "pagamento": "Pix, cartão ou link de pagamento.",
-    "observacao": "Valor estimado. O preço final é confirmado após a conferência da arte."
-  },
-  "categorias": [
-    {
-      "nome": "Impresso comercial",
-      "descricao": "A papelaria que apresenta sua empresa todos os dias — com papel, cor e acabamento à altura.",
-      "cor": "Vermelho"
-    },
-    {
-      "nome": "Brindes",
-      "descricao": "Presentes personalizados que mantêm sua marca na mesa do cliente o ano inteiro.",
-      "cor": "Cimento"
-    },
-    {
-      "nome": "Embalagens",
-      "descricao": "Embalagens que valorizam o produto e fazem do delivery uma experiência de marca.",
-      "cor": "Azul"
-    },
-    {
-      "nome": "Comunicação visual",
-      "descricao": "Sua marca em grande formato: fachadas, eventos, frotas e pontos de venda.",
-      "cor": "Vermelho"
-    }
-  ],
   "produtos": [
     {
-      "nome": "Cartão de visita",
+      "nome": "Cartão de visita teste a",
       "categoria": "Impresso comercial",
       "visivel": true,
       "fotos": [
         "/assets/produtos/cartao-de-visita-1.jpg",
         "/assets/produtos/cartao-de-visita-2.jpg",
-        "/assets/produtos/cartao-de-visita-3.jpg"
+        "/assets/produtos/cartao-de-visita-3.jpg",
+        "/assets/produtos/sacola-delivery-1.jpg"
       ],
       "descricao": "Formato 9 × 5 cm, impressão colorida de alta definição.",
       "quantidades": [
         {
-          "qtd": 250,
+          "qtd": 251,
           "preco": 69
         },
         {
@@ -189,10 +160,7 @@
         "/assets/produtos/calendarios-1.jpg",
         "/assets/produtos/calendarios-2.jpg",
         "/assets/produtos/calendarios-3.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Folder",
@@ -275,10 +243,7 @@
       "fotos": [
         "/assets/produtos/pastas-1.jpg",
         "/assets/produtos/pastas-2.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Timbrados",
@@ -287,10 +252,7 @@
       "fotos": [
         "/assets/produtos/timbrados-1.jpg",
         "/assets/produtos/timbrados-2.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Banner",
@@ -366,10 +328,7 @@
       "fotos": [
         "/assets/produtos/faixa-1.jpg",
         "/assets/produtos/faixa-2.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Agenda",
@@ -378,10 +337,7 @@
       "fotos": [
         "/assets/produtos/agenda-1.jpg",
         "/assets/produtos/agenda-2.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Calendário de mesa",
@@ -390,10 +346,7 @@
       "fotos": [
         "/assets/produtos/calendarios-3.jpg",
         "/assets/produtos/calendarios-1.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Calendário de parede",
@@ -402,10 +355,7 @@
       "fotos": [
         "/assets/produtos/calendarios-2.jpg",
         "/assets/produtos/calendario-de-parede-2.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Mousepad",
@@ -414,10 +364,7 @@
       "fotos": [
         "/assets/produtos/mousepad-1.jpg",
         "/assets/produtos/mousepad-2.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Caderno",
@@ -426,10 +373,7 @@
       "fotos": [
         "/assets/produtos/caderno-1.jpg",
         "/assets/produtos/agenda-2.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Caneta",
@@ -438,10 +382,7 @@
       "fotos": [
         "/assets/produtos/caneta-1.jpg",
         "/assets/produtos/caneta-2.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Caixa de anote",
@@ -450,10 +391,7 @@
       "fotos": [
         "/assets/produtos/caixa-de-anote-1.jpg",
         "/assets/produtos/caixa-de-anote-2.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Caderneta",
@@ -462,10 +400,7 @@
       "fotos": [
         "/assets/produtos/caderneta-1.jpg",
         "/assets/produtos/caderneta-2.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Sacola",
@@ -475,10 +410,7 @@
         "/assets/produtos/sacola-1.jpg",
         "/assets/produtos/sacola-2.jpg",
         "/assets/produtos/sacola-3.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Saco delivery",
@@ -487,10 +419,7 @@
       "fotos": [
         "/assets/produtos/saco-delivery-1.jpg",
         "/assets/produtos/saco-delivery-2.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Caixa p/ hot dog",
@@ -499,10 +428,7 @@
       "fotos": [
         "/assets/produtos/caixa-p-hot-dog-1.jpg",
         "/assets/produtos/caixa-p-hot-dog-2.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Caixa p/ batata frita",
@@ -511,10 +437,7 @@
       "fotos": [
         "/assets/produtos/caixa-p-batata-frita-1.jpg",
         "/assets/produtos/caixa-p-batata-frita-2.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Caixa p/ hambúrguer",
@@ -523,10 +446,7 @@
       "fotos": [
         "/assets/produtos/caixa-p-hamburguer-1.jpg",
         "/assets/produtos/caixa-p-hamburguer-2.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Adesivo vinil",
@@ -614,10 +534,7 @@
       "fotos": [
         "/assets/produtos/adesivo-troca-de-oleo-1.jpg",
         "/assets/produtos/adesivo-troca-de-oleo-2.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Faixa",
@@ -626,10 +543,7 @@
       "fotos": [
         "/assets/produtos/faixa-2.jpg",
         "/assets/produtos/faixa-1.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     },
     {
       "nome": "Lona com ilhós",
@@ -638,10 +552,37 @@
       "fotos": [
         "/assets/produtos/lona-com-ilhos-1.jpg",
         "/assets/produtos/lona-com-ilhos-2.jpg"
-      ],
-      "descricao": "",
-      "quantidades": [],
-      "opcoes": []
+      ]
     }
-  ]
+  ],
+  "categorias": [
+    {
+      "nome": "Impresso comercial",
+      "descricao": "A papelaria que apresenta sua empresa todos os dias — com papel, cor e acabamento à altura.",
+      "cor": "Vermelho"
+    },
+    {
+      "nome": "Brindes",
+      "descricao": "Presentes personalizados que mantêm sua marca na mesa do cliente o ano inteiro.",
+      "cor": "Cimento"
+    },
+    {
+      "nome": "Embalagens",
+      "descricao": "Embalagens que valorizam o produto e fazem do delivery uma experiência de marca.",
+      "cor": "Azul"
+    },
+    {
+      "nome": "Comunicação visual",
+      "descricao": "Sua marca em grande formato: fachadas, eventos, frotas e pontos de venda.",
+      "cor": "Vermelho"
+    }
+  ],
+  "condicoes": {
+    "prazo": "Produção em até 5 dias úteis após a aprovação da arte.",
+    "entrega": "Retirada na gráfica ou entrega em Feira de Santana (combinada no WhatsApp).",
+    "pagamento": "Pix, cartão ou link de pagamento.",
+    "observacao": "Valor estimado. O preço final é confirmado após a conferência da arte."
+  },
+  "whatsapp": "5575981963281",
+  "precos_de_exemplo": true
 }
