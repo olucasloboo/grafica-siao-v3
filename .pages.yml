@@ -19,7 +19,6 @@ content:
     fields:
       - name: produtos
         label: Produtos
-        description: Cada item é um cartão na seção Produtos. A ordem aqui é a ordem no site.
         type: object
         list:
           collapsible:
@@ -54,8 +53,7 @@ content:
             description: Aparece na janela de pedido. Ex. "Formato 9 × 5 cm, impressão colorida."
             type: string
           - name: quantidades
-            label: Tabela de quantidades e preços
-            description: Deixe vazia para o produto abrir como "sob orçamento". O preço é o valor total do pedido naquela quantidade.
+            label: Preços por quantidade (vazio = sob orçamento)
             type: object
             list: true
             fields:
@@ -66,14 +64,13 @@ content:
                 options:
                   min: 1
               - name: preco
-                label: Preço total (R$)
+                label: Preço total do pedido (R$)
                 type: number
                 required: true
                 options:
                   min: 0
           - name: opcoes
-            label: Opções (papel, acabamento, tamanho…)
-            description: Só valem se a tabela de quantidades estiver preenchida.
+            label: Opções (material, acabamento, tamanho…)
             type: object
             list:
               collapsible:
@@ -81,8 +78,7 @@ content:
                 summary: "{nome}"
             fields:
               - name: nome
-                label: Nome da opção
-                description: Ex. Material, Impressão, Acabamento.
+                label: Nome da opção (ex. Material)
                 type: string
                 required: true
               - name: tipo
@@ -92,8 +88,7 @@ content:
                 options:
                   values: [Escolher só um, Pode escolher vários]
               - name: itens
-                label: Escolhas
-                description: Em "Escolher só um", a primeira escolha já vem marcada; deixe o acréscimo dela em 0.
+                label: Escolhas (a primeira já vem marcada)
                 type: object
                 list: true
                 fields:
@@ -102,8 +97,7 @@ content:
                     type: string
                     required: true
                   - name: acrescimo
-                    label: Acréscimo
-                    description: Use 0 se não muda o preço.
+                    label: Acréscimo (0 = sem custo)
                     type: number
                     options:
                       min: 0
@@ -115,7 +109,6 @@ content:
 
       - name: categorias
         label: Categorias (abas)
-        description: Nome, texto e cor da faixa de cada aba. Para criar uma categoria nova, peça para incluir o nome também na lista do campo "Categoria" do produto.
         type: object
         list:
           collapsible:
