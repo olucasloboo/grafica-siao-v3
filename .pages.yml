@@ -1,6 +1,9 @@
-# Painel de produtos da Gráfica Sião (Pages CMS — https://app.pagescms.org)
-# Define os campos que aparecem no painel. Tudo é salvo em data/produtos.json,
-# que o site lê para montar a seção Produtos e a janela de pedido.
+# Painel da Gráfica Sião (Pages CMS — https://app.pagescms.org)
+# Cada item de "content" vira uma tela no menu do painel:
+#   Produtos            -> data/produtos.json
+#   Categorias (abas)   -> data/categorias.json
+#   Pedido e WhatsApp   -> data/pedido.json
+# O site lê esses arquivos para montar a seção Produtos e a janela de pedido.
 
 media:
   - name: fotos
@@ -11,8 +14,9 @@ media:
     rename: safe
 
 content:
-  - name: catalogo
-    label: Produtos e preços
+  # ---------- PRODUTOS ----------
+  - name: produtos
+    label: Produtos
     type: file
     path: data/produtos.json
     format: json
@@ -23,7 +27,7 @@ content:
         list:
           collapsible:
             collapsed: true
-            summary: "{nome} — {categoria}"
+            summary: "{nome} · {categoria}"
         fields:
           - name: nome
             label: Nome do produto
@@ -35,30 +39,28 @@ content:
             required: true
             options:
               values: [Impresso comercial, Brindes, Embalagens, Comunicação visual]
-          - name: visivel
-            label: Mostrar no site
-            description: Desmarque para esconder o produto sem apagar.
-            type: boolean
-            default: true
           - name: fotos
             label: Fotos
-            description: A primeira é a principal. Use fotos em pé (formato vertical) ou quadradas.
+            description: A primeira é a principal. Fotos em pé ou quadradas, até uns 3 MB cada.
             type: image
             options:
               media: fotos
               multiple:
                 max: 6
           - name: descricao
-            label: Descrição curta
-            description: Aparece na janela de pedido. Ex. "Formato 9 × 5 cm, impressão colorida."
+            label: Descrição curta (aparece na janela de pedido)
             type: string
+          - name: visivel
+            label: Mostrar no site
+            type: boolean
+            default: true
           - name: quantidades
             label: Preços por quantidade (vazio = sob orçamento)
             type: object
             list: true
             fields:
               - name: qtd
-                label: Quantidade (unidades)
+                label: Quantidade
                 type: number
                 required: true
                 options:
@@ -107,8 +109,15 @@ content:
                     options:
                       values: [Valor fixo (R$), Porcentagem do preço base (%), Por unidade (R$ cada)]
 
+  # ---------- CATEGORIAS ----------
+  - name: categorias
+    label: Categorias (abas)
+    type: file
+    path: data/categorias.json
+    format: json
+    fields:
       - name: categorias
-        label: Categorias (abas)
+        label: Categorias
         type: object
         list:
           collapsible:
@@ -116,11 +125,11 @@ content:
             summary: "{nome}"
         fields:
           - name: nome
-            label: Nome
+            label: Nome da aba
             type: string
             required: true
           - name: descricao
-            label: Texto da faixa
+            label: Texto da faixa colorida
             type: string
           - name: cor
             label: Cor da faixa
@@ -128,30 +137,35 @@ content:
             options:
               values: [Vermelho, Azul, Cimento]
 
-      - name: condicoes
-        label: Condições (aparecem na janela de pedido)
-        type: object
-        fields:
-          - name: prazo
-            label: Prazo
-            type: string
-          - name: entrega
-            label: Entrega
-            type: string
-          - name: pagamento
-            label: Pagamento
-            type: string
-          - name: observacao
-            label: Aviso abaixo do valor
-            type: string
-
+  # ---------- PEDIDO E WHATSAPP ----------
+  - name: pedido
+    label: Pedido e WhatsApp
+    type: file
+    path: data/pedido.json
+    format: json
+    fields:
       - name: whatsapp
         label: WhatsApp que recebe os pedidos
         description: Só números, com 55 e DDD. Ex. 5575981963281
         type: string
         required: true
-
       - name: precos_de_exemplo
         label: Os preços ainda são de exemplo
-        description: Enquanto marcado, a janela de pedido mostra o aviso "Preços de exemplo". Desmarque quando os preços forem os reais.
+        description: Enquanto marcado, a janela de pedido mostra o aviso "Preços de exemplo".
         type: boolean
+      - name: condicoes
+        label: Condições (aparecem na janela de pedido)
+        type: object
+        fields:
+          - name: prazo
+            label: Prazo de produção
+            type: string
+          - name: entrega
+            label: Entrega
+            type: string
+          - name: pagamento
+            label: Formas de pagamento
+            type: string
+          - name: observacao
+            label: Aviso abaixo do valor
+            type: string

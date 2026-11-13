@@ -1,0 +1,24 @@
+{
+  "categorias": [
+    {
+      "nome": "Impresso comercial",
+      "descricao": "A papelaria que apresenta sua empresa todos os dias — com papel, cor e acabamento à altura.",
+      "cor": "Vermelho"
+    },
+    {
+      "nome": "Brindes",
+      "descricao": "Presentes personalizados que mantêm sua marca na mesa do cliente o ano inteiro.",
+      "cor": "Cimento"
+    },
+    {
+      "nome": "Embalagens",
+      "descricao": "Embalagens que valorizam o produto e fazem do delivery uma experiência de marca.",
+      "cor": "Azul"
+    },
+    {
+      "nome": "Comunicação visual",
+      "descricao": "Sua marca em grande formato: fachadas, eventos, frotas e pontos de venda.",
+      "cor": "Vermelho"
+    }
+  ]
+}

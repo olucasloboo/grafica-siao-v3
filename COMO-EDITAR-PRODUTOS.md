@@ -3,25 +3,26 @@
 Os produtos do site são editados por um painel, sem mexer em código.
 O painel é o **Pages CMS**: <https://app.pagescms.org>
 
-Tudo o que é salvo no painel vai para o arquivo `data/produtos.json`.
-O site lê esse arquivo e monta sozinho as abas, os cartões e a janela de pedido.
+O painel tem três telas no menu: **Produtos**, **Categorias (abas)** e **Pedido e WhatsApp**.
+Elas salvam nos arquivos `data/produtos.json`, `data/categorias.json` e `data/pedido.json`.
+O site lê esses arquivos e monta sozinho as abas, os cartões e a janela de pedido.
 Depois de salvar, o site atualiza em cerca de 1 a 2 minutos.
 
 ## Primeiro acesso (feito uma vez pelo dono do repositório)
 
 1. Entre em <https://app.pagescms.org> e clique em **Sign in with GitHub**.
 2. Autorize o Pages CMS e instale o aplicativo dele na conta que tem o repositório `grafica-siao-v3`.
-3. Escolha o repositório `grafica-siao-v3`. Vai aparecer **Produtos e preços** no menu.
+3. Escolha o repositório `grafica-siao-v3`. Vão aparecer **Produtos**, **Categorias (abas)** e **Pedido e WhatsApp** no menu.
 4. Para outra pessoa editar sem conta no GitHub, convide pelo e-mail em **Settings → Collaborators** (ou equivalente no painel).
 
 ## Adicionar um produto
 
-1. Abra **Produtos e preços** e, em **Produtos**, clique em **Add an entry** (adicionar).
+1. Abra **Produtos** e clique em **Add an entry** (adicionar).
 2. Preencha:
    - **Nome do produto**: o nome que aparece no cartão.
    - **Categoria**: em qual aba ele aparece.
    - **Mostrar no site**: deixe marcado.
-   - **Fotos**: envie de 1 a 6 fotos. A primeira é a principal. Prefira fotos em pé ou quadradas.
+   - **Fotos**: envie de 1 a 6 fotos. A primeira é a principal. Prefira fotos em pé ou quadradas, com até uns 3 MB cada (foto maior dá o erro 413; reduza antes, por exemplo em squoosh.app).
    - **Descrição curta**: aparece na janela de pedido.
 3. Clique em **Save** (salvar).
 
@@ -30,7 +31,7 @@ Sem tabela de preços, o pedido chega no WhatsApp como **orçamento** (o cliente
 
 ## Colocar preço em um produto
 
-Em **Tabela de quantidades e preços**, adicione uma linha para cada quantidade:
+Em **Preços por quantidade**, adicione uma linha para cada quantidade:
 
 | Quantidade | Preço total |
 |---|---|
@@ -59,13 +60,13 @@ Em **Opções**, crie um grupo para cada escolha do cliente:
 
 - **Esconder um produto** sem apagar: desmarque **Mostrar no site**.
 - **Mudar a ordem**: arraste os produtos na lista. A ordem do painel é a ordem no site.
-- **Categorias (abas)**: muda o nome, o texto e a cor da faixa de cada aba.
+- **Categorias (abas)** (tela própria no menu): muda o nome, o texto e a cor da faixa de cada aba.
   Para criar uma categoria nova, é preciso incluir o nome dela também na lista do campo "Categoria" (no arquivo `.pages.yml`) — peça a quem cuida do site.
-- **Condições**: prazo, entrega, pagamento e o aviso que aparecem na janela de pedido.
-- **WhatsApp que recebe os pedidos**: só números, com 55 e DDD.
-- **Os preços ainda são de exemplo**: desmarque quando os preços forem os reais. Enquanto marcado, a janela de pedido mostra o aviso "Preços de exemplo".
+- **Pedido e WhatsApp** (tela própria no menu): condições de prazo, entrega, pagamento e o aviso que aparecem na janela de pedido.
+  - **WhatsApp que recebe os pedidos**: só números, com 55 e DDD.
+  - **Os preços ainda são de exemplo**: desmarque quando os preços forem os reais. Enquanto marcado, a janela de pedido mostra o aviso "Preços de exemplo".
 
 ## Se algo der errado
 
 - Produto sem nome é ignorado. Tabela de preços com linha incompleta faz o produto voltar para "sob orçamento".
-- O GitHub guarda cada alteração. Dá para voltar uma versão anterior pelo histórico do arquivo `data/produtos.json` no repositório.
+- O GitHub guarda cada alteração. Dá para voltar uma versão anterior pelo histórico dos arquivos da pasta `data` no repositório.

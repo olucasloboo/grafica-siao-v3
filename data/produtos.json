@@ -554,35 +554,5 @@
         "/assets/produtos/lona-com-ilhos-2.jpg"
       ]
     }
-  ],
-  "categorias": [
-    {
-      "nome": "Impresso comercial",
-      "descricao": "A papelaria que apresenta sua empresa todos os dias — com papel, cor e acabamento à altura.",
-      "cor": "Vermelho"
-    },
-    {
-      "nome": "Brindes",
-      "descricao": "Presentes personalizados que mantêm sua marca na mesa do cliente o ano inteiro.",
-      "cor": "Cimento"
-    },
-    {
-      "nome": "Embalagens",
-      "descricao": "Embalagens que valorizam o produto e fazem do delivery uma experiência de marca.",
-      "cor": "Azul"
-    },
-    {
-      "nome": "Comunicação visual",
-      "descricao": "Sua marca em grande formato: fachadas, eventos, frotas e pontos de venda.",
-      "cor": "Vermelho"
-    }
-  ],
-  "condicoes": {
-    "prazo": "Produção em até 5 dias úteis após a aprovação da arte.",
-    "entrega": "Retirada na gráfica ou entrega em Feira de Santana (combinada no WhatsApp).",
-    "pagamento": "Pix, cartão ou link de pagamento.",
-    "observacao": "Valor estimado. O preço final é confirmado após a conferência da arte."
-  },
-  "whatsapp": "5575981963281",
-  "precos_de_exemplo": true
+  ]
 }

@@ -1695,7 +1695,10 @@ html.hov .shelf-item:hover::before{opacity:1;transform:translate(-50%,0)}
   const normTipo=v=>/v[aá]rios|multipla/i.test(v||'')?'multipla':'unica';
   const normModo=v=>{v=String(v||'');return /%/.test(v)?'%':/unidade|^un$/i.test(v)?'un':'R$'};
 
-  fetch('data/produtos.json',{cache:'no-cache'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(d=>{
+  /* três arquivos, cada um uma tela do painel: produtos (obrigatório), categorias e pedido/WhatsApp (opcionais) */
+  const getJSON=(f,must)=>fetch('data/'+f,{cache:'no-cache'}).then(r=>r.ok?r.json():must?Promise.reject(r.status):{}).catch(e=>must?Promise.reject(e):{});
+  Promise.all([getJSON('produtos.json',true),getJSON('categorias.json'),getJSON('pedido.json')]).then(([prod,cat,ped])=>{
+    const d=Object.assign({},prod,cat,ped,{produtos:Array.isArray(prod)?prod:prod.produtos});
     catalog=Object.assign(catalog,d);
     catalog.produtos=(d.produtos||[]).filter(p=>p&&String(p.nome||'').trim()&&p.visivel!==false).map((p,i)=>{
       p._id=i;p._fotos=(Array.isArray(p.fotos)?p.fotos:p.fotos?[p.fotos]:[]).filter(Boolean);
