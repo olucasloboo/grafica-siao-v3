@@ -47,7 +47,7 @@
           ]
         },
         {
-          "nome": "Papel",
+          "nome": "Material",
           "tipo": "Escolher só um",
           "itens": [
             {
@@ -208,7 +208,7 @@
           ]
         },
         {
-          "nome": "Papel",
+          "nome": "Material",
           "tipo": "Escolher só um",
           "itens": [
             {
