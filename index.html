@@ -561,8 +561,8 @@ textarea.om-input{min-height:84px;resize:vertical}
 .shelf-item b{display:block;color:var(--azul-3);font-weight:600;line-height:1.25}
 .shelf-item small{color:var(--grafite);font-size:14px}
 /* livro como imagem PNG (mockup): flutua e se inclina ao passar o mouse */
-.sh-mock{display:block;width:100%;height:230px;object-fit:contain;object-position:center bottom;margin:0 auto 26px;filter:drop-shadow(0 18px 18px rgba(35,42,51,.22));transition:transform .7s var(--out),filter .7s var(--out);user-select:none;-webkit-user-drag:none}
-html.hov .shelf-item.mock:hover .sh-mock,.shelf-item.mock.on .sh-mock{transform:translateY(-14px) rotate(-2deg) scale(1.03);filter:drop-shadow(0 30px 24px rgba(35,42,51,.28))}
+.sh-mock{display:block;width:100%;height:230px;object-fit:contain;object-position:center bottom;margin:0 auto 26px;transition:transform .7s var(--out);user-select:none;-webkit-user-drag:none}
+html.hov .shelf-item.mock:hover .sh-mock,.shelf-item.mock.on .sh-mock{transform:translateY(-14px)}
 .cv-mock{object-fit:contain!important;background:transparent}
 .sc-pub{font-size:9px;letter-spacing:.2em;text-transform:uppercase;opacity:.8;position:relative;z-index:1}
 .sc-t{font-family:var(--serif);font-size:22px;line-height:1.02;position:relative;z-index:1}
@@ -592,6 +592,11 @@ html.hov .shelf-item.mock:hover .sh-mock,.shelf-item.mock.on .sh-mock{transform:
 .bm-flat .sc-t{font-size:clamp(22px,2.6vw,34px)}
 .bm-flat .sc-pub{font-size:10px}.bm-flat .sc-a{font-size:13px}
 .bm-flat img.cv-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* mockup PNG: aparece exatamente como foi enviado (sem fundo, borda arredondada, brilho ou sombra) */
+.bm-flat.is-mock{height:88%;width:88%;aspect-ratio:auto;padding:0;border-radius:0;background:none;box-shadow:none;overflow:visible}
+.bm-flat.is-mock::after{display:none}
+.bm-flat.is-mock img.cv-mock{object-fit:contain}
+.bm-thumbs button img[style*="contain"]{background:none}
 .bm-nav{position:absolute;top:calc(50% - 40px);z-index:2;width:46px;height:46px;border-radius:50%;background:rgba(250,249,247,.92);color:var(--azul-3);display:grid;place-items:center;box-shadow:0 8px 20px -10px rgba(0,0,0,.4);transition:transform .4s var(--spring),background .3s,color .3s}
 .bm-nav:hover{background:var(--azul);color:#fff;transform:scale(1.08)}
 .bm-prev{left:12px}.bm-next{right:12px}
@@ -1883,7 +1888,7 @@ window.__siaoMain=function(SITE){
     document.getElementById('bmTitle').innerHTML=l.t;
     document.getElementById('bmAuthor').innerHTML=l.a;
     document.getElementById('bmDesc').textContent=String(l.d);
-    bmStage.innerHTML=`<div class="bm-slide cover-slide on"><div class="bm-flat">${coverHTML(l)}</div></div>`+l.fotos.map((f,k)=>`<div class="bm-slide"><img src="${escB(f)}" alt="${l.t} — foto ${k+1}"></div>`).join('');
+    bmStage.innerHTML=`<div class="bm-slide cover-slide on"><div class="bm-flat${l.mock?' is-mock':''}">${coverHTML(l)}</div></div>`+l.fotos.map((f,k)=>`<div class="bm-slide"><img src="${escB(f)}" alt="${l.t} — foto ${k+1}"></div>`).join('');
     bmThumbs.innerHTML=`<button class="on" aria-label="Capa">${l.mock?`<img src="${escB(l.mock)}" alt="" style="object-fit:contain">`:'<span class="th-cover"></span>'}</button>`+l.fotos.map((f,k)=>`<button aria-label="Foto ${k+1}"><img src="${escB(f.replace('w=1100','w=160'))}" alt=""></button>`).join('');
     bmN=l.fotos.length+1;bmI=0;bmUpdate();
     bm.classList.add('open');bm.setAttribute('aria-hidden','false');if(lenis)lenis.stop();
