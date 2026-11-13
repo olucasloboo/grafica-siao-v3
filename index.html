@@ -65,8 +65,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
 em{font-style:italic;font-family:var(--serif)}
 main{overflow-x:hidden;overflow-x:clip}
-.label{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--grafite)}
-.label::before{content:"";width:10px;height:10px;border-radius:50%;flex:none;background:conic-gradient(var(--vermelho) 0 50%,var(--azul-m) 0)}
+/* rótulo das seções: marca de registro de impressão (a "mira" das provas gráficas) + texto simples */
+.label{display:inline-flex;align-items:center;gap:9px;font-size:15px;font-weight:500;letter-spacing:0;color:var(--grafite)}
+.label::before{content:"";width:16px;height:16px;flex:none;background:var(--vermelho);-webkit-mask:var(--reg) center/contain no-repeat;mask:var(--reg) center/contain no-repeat}
+:root{--reg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.6'%3E%3Ccircle cx='12' cy='12' r='6.5'/%3E%3Cpath d='M12 1v22M1 12h22'/%3E%3C/svg%3E")}
 h1,h2,h3,h4{margin:0;font-weight:400;line-height:1.05;letter-spacing:-.025em}
 h2{font-family:var(--serif);font-size:var(--t-1)}
 p{margin:0}
@@ -299,6 +301,7 @@ h2 em{color:var(--vermelho)}
 .mp-title.in .mp-arrow{opacity:1;animation:mp-bob 1.6s ease-in-out infinite 1.2s}
 @keyframes mp-bob{50%{transform:translateY(8px)}}
 @media (max-width:640px){.mp-title{flex-wrap:nowrap;font-size:clamp(34px,10.5vw,46px)}.mp-arrow{width:26px;height:26px}}
+.cat-msg{color:rgba(255,255,255,.7);padding:24px 0}
 .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px}
 .tab{padding:12px 22px;border-radius:999px;border:1px solid rgba(255,255,255,.22);font-weight:500;transition:background .35s,color .35s,border-color .35s;color:#fff;white-space:nowrap;flex:none}
 .tab:hover{border-color:rgba(255,255,255,.55)}
@@ -1064,31 +1067,9 @@ html.hov .shelf-item:hover::before{opacity:1;transform:translate(-50%,0)}
 
     <p class="mp-title" aria-label="Monte seu pedido"><span class="mp-w">Monte</span> <span class="mp-w">seu</span> <em class="mp-w">pedido</em><svg class="mp-arrow" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6"/></svg></p>
 
-    <div class="tabs rv" role="tablist">
-      <button class="tab" role="tab" aria-selected="true" data-tab="0">Impresso comercial</button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="1">Brindes</button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="2">Embalagens</button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="3">Comunicação visual</button>
-    </div>
-
-    <div class="panels rv">
-      <div class="panel active" data-panel="0" role="tabpanel">
-        <div class="panel-feature pf-red"><div><h3>Impresso comercial</h3><p>A papelaria que apresenta sua empresa todos os dias — com papel, cor e acabamento à altura.</p></div><span class="big-num">01</span></div>
-        <ul class="panel-list" data-items="Cartão de visita|Crachá|Calendários|Folder|Pastas|Timbrados|Banner|Faixa"></ul>
-      </div>
-      <div class="panel" data-panel="1" role="tabpanel">
-        <div class="panel-feature light cement"><div><h3>Brindes</h3><p>Presentes personalizados que mantêm sua marca na mesa do cliente o ano inteiro.</p></div><span class="big-num">02</span></div>
-        <ul class="panel-list" data-items="Agenda|Calendário de mesa|Calendário de parede|Mousepad|Caderno|Caneta|Caixa de anote|Caderneta"></ul>
-      </div>
-      <div class="panel" data-panel="2" role="tabpanel">
-        <div class="panel-feature pf-blue"><div><h3>Embalagens</h3><p>Embalagens que valorizam o produto e fazem do delivery uma experiência de marca.</p></div><span class="big-num">03</span></div>
-        <ul class="panel-list" data-items="Sacola|Saco delivery|Caixa p/ hot dog|Caixa p/ batata frita|Caixa p/ hambúrguer"></ul>
-      </div>
-      <div class="panel" data-panel="3" role="tabpanel">
-        <div class="panel-feature pf-red"><div><h3>Comunicação visual</h3><p>Sua marca em grande formato: fachadas, eventos, frotas e pontos de venda.</p></div><span class="big-num">04</span></div>
-        <ul class="panel-list" data-items="Adesivo vinil|Adesivo troca de óleo|Faixa|Lona com ilhós"></ul>
-      </div>
-    </div>
+    <!-- abas e produtos são montados a partir de data/produtos.json (editado pelo painel em app.pagescms.org) -->
+    <div class="tabs rv" role="tablist" id="catTabs"></div>
+    <div class="panels rv" id="catPanels"><p class="cat-msg">Carregando produtos…</p></div>
   </div>
 </section>
 
@@ -1349,43 +1330,10 @@ html.hov .shelf-item:hover::before{opacity:1;transform:translate(-50%,0)}
   document.querySelectorAll('[data-wa]').forEach(a=>{a.href=WA+'&text='+encodeURIComponent('Olá! Quero um orçamento de '+a.dataset.wa+'.')});
 
   const arrow='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg>';
-  /* fotos dos produtos (Unsplash, provisórias) — chave "Nome" ou "Nome|nº da aba"; cada produto alterna suas fotos */
-  const productPhotos={
-    'Cartão de visita':['1718670013921-2f144aba173a','1718670013988-c6e3edb92345','1599590984817-0c15f31b1fa5'],
-    'Crachá':['1769029269011-b32f787c288c','1762637119322-0aeb996bc832'],
-    'Calendários':['1611988615248-5d4f0b9ac31e','1578625155481-7bc40a6481b6','1769596722510-b92780d03424'],
-    'Folder':['1790345835845-bda0548978b2','1712640365578-fbdf50b55ddc','1422036306541-00138cae4dbc'],
-    'Pastas':['1539355168476-3e8c4a84f447','1654610285929-a1b63280dd60'],
-    'Timbrados':['1542120926-32f3559e9473','1667201081117-99e1d9aecd76'],
-    'Banner':['1766384093125-f00a4eb8a392','1617355405361-29f0f0a3d737'],
-    'Faixa|0':['1730198125410-4c19f786fc11','1776437209490-7321478ebb18'],
-    'Agenda':['1783099779469-5b02ae272c09','1647559709298-c0e3dcb47092'],
-    'Calendário de mesa':['1769596722510-b92780d03424','1611988615248-5d4f0b9ac31e'],
-    'Calendário de parede':['1578625155481-7bc40a6481b6','1770250959829-de36726e99c4'],
-    'Mousepad':['1629429408209-1f912961dbd8','1631098983935-5363b8e50edb'],
-    'Caderno':['1531346878377-a5be20888e57','1647559709298-c0e3dcb47092'],
-    'Caneta':['1455390582262-044cdead277a','1760720962373-60841d9b2c8a'],
-    'Caixa de anote':['1580934174026-8142803ebb5b','1759868937753-34859b641bc1'],
-    'Caderneta':['1591195852468-03a01d1375d6','1651761409007-0395097c269d'],
-    'Sacola':['1637903921530-f1135c99b8d5','1760565030282-8fb986077e0d','1677753727712-c79ce4c420c1'],
-    'Saco delivery':['1616429368325-d5d7542b0ec3','1561715276-a2d087060f1d'],
-    'Caixa p/ hot dog':['1638368593249-7cadb261e8b3','1776260486226-11dabfacf5f2'],
-    'Caixa p/ batata frita':['1630384060421-cb20d0e0649d','1768215610440-fcb9631c7ee2'],
-    'Caixa p/ hambúrguer':['1615380547239-45634678986c','1635530865047-cdd83986fc55'],
-    'Adesivo vinil':['1774803543112-828c3ac44cea','1625768376503-68d2495d78c5','1540651810471-5699df74834f'],
-    'Adesivo troca de óleo':['1591844480704-e81058db777f','1685553334511-b77b0a7ca676'],
-    'Faixa|3':['1776437209490-7321478ebb18','1730198125410-4c19f786fc11'],
-    'Lona com ilhós':['1780361974643-93e06a0b0b0b','1533069027836-fa937181a8ce']
-  };
-  const PU=id=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=640&h=800&q=75`;
-  document.querySelectorAll('.panel-list').forEach(ul=>{
-    const p=ul.closest('.panel').dataset.panel;
-    ul.innerHTML=ul.dataset.items.split('|').map((t,i)=>{
-      const ids=productPhotos[t+'|'+p]||productPhotos[t]||[];
-      const media=ids.length?`<span class="pl-media">${ids.map((id,k)=>`<img class="${k?'':'on'}" src="${PU(id)}" alt="${t}" loading="lazy">`).join('')}${ids.length>1?`<span class="pl-dots">${ids.map((_,k)=>`<i class="${k?'':'on'}"></i>`).join('')}</span>`:''}</span>`:'';
-      return `<li style="--i:${i}" tabindex="0" role="button" data-name="${t}" data-ph="${ids.join(',')}">${media||`<span class="pl-media"></span>`}<span class="pl-body"><span class="pl-t">${t}</span><span class="pl-go">Montar pedido${arrow}</span></span></li>`;
-    }).join('');
-  });
+  /* endereço da foto: aceita link completo (ex.: Unsplash) ou arquivo enviado pelo painel (assets/produtos/...) */
+  const photoUrl=(src,w,h)=>{src=String(src||'').trim();if(!src)return '';
+    if(/images\.unsplash\.com/.test(src))return src.split('?')[0]+`?auto=format&fit=crop&w=${w}&h=${h}&q=75`;
+    return /^(https?:)?\/\//.test(src)?src:src.replace(/^\/+/,'')};
 
   /* fotos dos produtos: passam devagar sozinhas e também podem ser arrastadas (mouse ou dedo) */
   const plTimers=new WeakMap(),PL_EVERY=5200;
@@ -1685,22 +1633,12 @@ html.hov .shelf-item:hover::before{opacity:1;transform:translate(-50%,0)}
   burger.addEventListener('click',()=>setMenu(!doc.classList.contains('menu-open')));
   addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
 
-  /* tabs */
-  const tabs=[...document.querySelectorAll('.tab')],panels=[...document.querySelectorAll('.panel')];
-  tabs.forEach(t=>t.addEventListener('click',()=>{
-    tabs.forEach(x=>x.setAttribute('aria-selected',x===t));
-    t.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
-    panels.forEach(p=>{const on=p.dataset.panel===t.dataset.tab;p.classList.toggle('active',on);
-      if(on)p.querySelectorAll('li').forEach(li=>{li.style.animation='none';li.offsetHeight;li.style.animation=''})});
-  }));
 
-  /* computador: expande só com o mouse. Celular: expande com um toque, fecha ao tocar de novo,
-     ao tocar fora ou ao trocar de aba — nunca fica aberto sozinho */
+  /* cartões: clique ou toque abre o pedido; no computador o cartão reage ao mouse */
   const canHover=matchMedia("(hover:hover) and (pointer:fine)").matches;
   doc.classList.toggle("hov",canHover);
-  const closeAll=()=>document.querySelectorAll(".panel-list li.open").forEach(li=>{li.classList.remove("open");plStop(li)});
-  document.querySelectorAll(".panel-list li").forEach(li=>{
-    const order=()=>openOrder(li.dataset.name,li.dataset.ph?li.dataset.ph.split(','):[]);
+  function bindCard(li,p){
+    const order=()=>openOrder(p);
     li.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();order()}});
     li.addEventListener("click",()=>{if(li._moved){li._moved=false;return}order()});
     plDrag(li);
@@ -1711,42 +1649,78 @@ html.hov .shelf-item:hover::before{opacity:1;transform:translate(-50%,0)}
         li.style.setProperty("--ry",((x-.5)*10).toFixed(2)+"deg");li.style.setProperty("--rx",((.5-y)*8).toFixed(2)+"deg");
         li.style.setProperty("--mx",(x*100).toFixed(1)+"%");li.style.setProperty("--my",(y*100).toFixed(1)+"%")});
     }
-  });
+    plIO.observe(li);
+  }
   /* as fotos de cada produto passam sozinhas enquanto o cartão está na tela (computador e celular) */
   const plIO=new IntersectionObserver(es=>es.forEach(e=>{const li=e.target;clearTimeout(li._plT);
     if(e.isIntersecting)li._plT=setTimeout(()=>plStart(li),(+li.style.getPropertyValue("--i")||0)%4*1300);else plStop(li)}),{threshold:.4});
-  document.querySelectorAll(".panel-list li").forEach(li=>plIO.observe(li));
-  document.addEventListener("click",e=>{if(!e.target.closest(".panel-list"))closeAll()});
-  document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",closeAll));
+
+  /* monta abas, faixas e cartões a partir do catálogo */
+  const CORES={vermelho:'pf-red',azul:'pf-blue',cimento:'light cement'};
+  function renderCatalog(){
+    const tabsEl=document.getElementById('catTabs'),panelsEl=document.getElementById('catPanels');
+    const cats=(catalog.categorias||[]).filter(c=>c&&c.nome);
+    catalog.produtos.forEach(p=>{const n=p.categoria||'Outros';if(!cats.some(c=>c.nome===n))cats.push({nome:n})}); /* categoria sem cadastro ainda aparece */
+    const groups=cats.map(c=>({c,items:catalog.produtos.filter(p=>(p.categoria||'Outros')===c.nome)})).filter(g=>g.items.length);
+    if(!groups.length){tabsEl.innerHTML='';panelsEl.innerHTML='<p class="cat-msg">Nenhum produto cadastrado no momento.</p>';return}
+    tabsEl.innerHTML=groups.map((g,i)=>`<button class="tab" role="tab" aria-selected="${!i}" data-tab="${i}">${esc(g.c.nome)}</button>`).join('');
+    panelsEl.innerHTML=groups.map((g,i)=>`<div class="panel${i?'':' active'}" data-panel="${i}" role="tabpanel">
+      <div class="panel-feature ${CORES[String(g.c.cor||'').toLowerCase()]||'pf-red'}"><div><h3>${esc(g.c.nome)}</h3>${g.c.descricao?`<p>${esc(g.c.descricao)}</p>`:''}</div><span class="big-num">${String(i+1).padStart(2,'0')}</span></div>
+      <ul class="panel-list">${g.items.map((p,j)=>{
+        const f=p._fotos,media=f.length?`<span class="pl-media">${f.map((u,k)=>`<img class="${k?'':'on'}" src="${esc(photoUrl(u,640,800))}" alt="${esc(p.nome)}" loading="lazy" draggable="false">`).join('')}${f.length>1?`<span class="pl-dots">${f.map((_,k)=>`<i class="${k?'':'on'}"></i>`).join('')}</span>`:''}</span>`:'<span class="pl-media"></span>';
+        return `<li style="--i:${j}" tabindex="0" role="button" data-p="${p._id}">${media}<span class="pl-body"><span class="pl-t">${esc(p.nome)}</span><span class="pl-go">Montar pedido${arrow}</span></span></li>`}).join('')}</ul></div>`).join('');
+    panelsEl.querySelectorAll('.panel-list li').forEach(li=>bindCard(li,catalog.produtos[+li.dataset.p]));
+    const tabs=[...tabsEl.children],panels=[...panelsEl.children];
+    tabs.forEach(t=>t.addEventListener('click',()=>{
+      tabs.forEach(x=>x.setAttribute('aria-selected',x===t));
+      t.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+      panels.forEach(p=>{const on=p.dataset.panel===t.dataset.tab;p.classList.toggle('active',on);
+        if(on)p.querySelectorAll('li').forEach(li=>{li.style.animation='none';li.offsetHeight;li.style.animation=''})});
+    }));
+  }
 
   /* ===== PEDIDO ONLINE =====
-     Os produtos com preço vêm de data/produtos.json (nome igual ao da lista).
-     Os demais abrem como "sob orçamento". O pedido sai como mensagem pronta no WhatsApp. */
+     Todos os produtos vêm de data/produtos.json (editado pelo painel em app.pagescms.org).
+     Produto com tabela de quantidades monta o preço; sem tabela, abre como "sob orçamento".
+     O pedido sai como mensagem pronta no WhatsApp. */
   const om=document.getElementById('orderModal'),omForm=document.getElementById('omForm'),omFields=document.getElementById('omFields');
   const omTotal=document.getElementById('omTotal'),omUnit=document.getElementById('omUnit');
-  let catalog={produtos:[],condicoes:{},whatsapp:'5575981963281'},byName={},ord=null,lastFocus=null;
+  let catalog={produtos:[],categorias:[],condicoes:{},whatsapp:'5575981963281'},ord=null,lastFocus=null;
   const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
   const num=v=>Number(v).toLocaleString('pt-BR');
   const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const cents=v=>Math.round(v*100)/100;
-  const okProduct=p=>p&&p.nome&&Array.isArray(p.quantidades)&&p.quantidades.length&&p.quantidades.every(q=>q.qtd>0&&q.preco>=0);
+  const priced=p=>Array.isArray(p.quantidades)&&p.quantidades.length>0&&p.quantidades.every(q=>q&&+q.qtd>0&&q.preco!==''&&q.preco!=null&&+q.preco>=0);
+  /* aceita os textos do painel ("Pode escolher vários", "Porcentagem...", "Por unidade...") e os códigos antigos */
+  const normTipo=v=>/v[aá]rios|multipla/i.test(v||'')?'multipla':'unica';
+  const normModo=v=>{v=String(v||'');return /%/.test(v)?'%':/unidade|^un$/i.test(v)?'un':'R$'};
 
   fetch('data/produtos.json',{cache:'no-cache'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(d=>{
-    catalog=Object.assign(catalog,d);byName={};
-    (d.produtos||[]).forEach(p=>{if(okProduct(p)){p.opcoes=(p.opcoes||[]).filter(o=>o&&Array.isArray(o.itens)&&o.itens.length);byName[p.nome]=p}else console.warn('Produto ignorado (dados incompletos):',p&&p.nome)});
-  }).catch(e=>console.warn('Não foi possível carregar data/produtos.json',e));
+    catalog=Object.assign(catalog,d);
+    catalog.produtos=(d.produtos||[]).filter(p=>p&&String(p.nome||'').trim()&&p.visivel!==false).map((p,i)=>{
+      p._id=i;p._fotos=(Array.isArray(p.fotos)?p.fotos:p.fotos?[p.fotos]:[]).filter(Boolean);
+      if(priced(p)){
+        p.quantidades=p.quantidades.map(q=>({qtd:+q.qtd,preco:+q.preco}));
+        p.opcoes=(p.opcoes||[]).filter(o=>o&&o.nome&&Array.isArray(o.itens)&&o.itens.length).map(o=>({nome:o.nome,tipo:normTipo(o.tipo),itens:o.itens.filter(it=>it&&it.nome).map(it=>({nome:it.nome,acrescimo:+it.acrescimo||0,modo:normModo(it.modo)}))})).filter(o=>o.itens.length);
+        p._preco=true;
+      }else{if(p.quantidades&&p.quantidades.length)console.warn('Tabela de preços incompleta, o produto fica sob orçamento:',p.nome);p._preco=false}
+      return p;
+    });
+    renderCatalog();observeAll();
+  }).catch(e=>{console.warn('Não foi possível carregar data/produtos.json',e);
+    document.getElementById('catPanels').innerHTML='<p class="cat-msg">Não foi possível carregar os produtos. Fale com a gente pelo WhatsApp.</p>'});
 
   /* acréscimo de uma opção: R$ (valor no pedido), % (do preço base) ou un (por unidade) */
   const delta=(it,q)=>{const v=+it.acrescimo||0;return it.modo==='%'?q.preco*v/100:it.modo==='un'?v*q.qtd:v};
   function state(){
-    const p=ord.p;if(!p)return null;
+    const p=ord.p;if(!p||!p._preco)return null;
     const qi=+omForm.querySelector('[name=om-q]:checked').value,q=p.quantidades[qi];
     let total=q.preco;const picks=p.opcoes.map((o,oi)=>[...omForm.querySelectorAll(`[name=om-o${oi}]:checked`)].map(i=>o.itens[+i.value]));
     picks.forEach(list=>list.forEach(it=>total+=delta(it,q)));
     return {q,picks,total:cents(total)};
   }
   function refresh(){
-    if(!ord.p)return;
+    if(!ord.p||!ord.p._preco)return;
     const s=state();
     ord.p.opcoes.forEach((o,oi)=>o.itens.forEach((it,ii)=>{
       const el=omForm.querySelector(`[name=om-o${oi}][value="${ii}"]`).nextElementSibling.querySelector('small');
@@ -1760,15 +1734,15 @@ html.hov .shelf-item:hover::before{opacity:1;transform:translate(-50%,0)}
   const pill=(type,name,value,label,small,checked)=>`<label class="om-pill"><input type="${type}" name="${name}" value="${value}"${checked?' checked':''}><span>${esc(label)}<small>${esc(small)}</small></span></label>`;
   const ICS={prazo:'<path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="9"/>',entrega:'<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>',pagamento:'<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/>'};
 
-  function openOrder(name,photos){
-    const p=byName[name]||null;ord={name,p};lastFocus=document.activeElement;
+  function openOrder(prod){
+    const name=prod.nome,photos=prod._fotos,p=prod._preco?prod:null;ord={name,p};lastFocus=document.activeElement;
     document.getElementById('omTitle').textContent=name;
-    document.getElementById('omDesc').textContent=p&&p.descricao?p.descricao:'Conte o que você precisa e receba o orçamento pelo WhatsApp.';
+    document.getElementById('omDesc').textContent=prod.descricao?prod.descricao:'Conte o que você precisa e receba o orçamento pelo WhatsApp.';
     /* fotos */
     const ph=document.getElementById('omPhoto'),th=document.getElementById('omThumbs');
-    const big=id=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&h=675&q=75`;
-    ph.innerHTML=photos.length?`<img src="${big(photos[0])}" alt="${esc(name)}">`:'';
-    th.innerHTML=photos.length>1?photos.map((id,k)=>`<button type="button" class="${k?'':'on'}" aria-label="Foto ${k+1}"><img src="${PU(id)}" alt=""></button>`).join(''):'';
+    const big=u=>photoUrl(u,900,675);
+    ph.innerHTML=photos.length?`<img src="${esc(big(photos[0]))}" alt="${esc(name)}">`:'';
+    th.innerHTML=photos.length>1?photos.map((u,k)=>`<button type="button" class="${k?'':'on'}" aria-label="Foto ${k+1}"><img src="${esc(photoUrl(u,160,120))}" alt=""></button>`).join(''):'';
     [...th.children].forEach((b,k)=>b.onclick=()=>{ph.firstChild.src=big(photos[k]);[...th.children].forEach(x=>x.classList.toggle('on',x===b))});
     /* condições */
     const c=catalog.condicoes||{};

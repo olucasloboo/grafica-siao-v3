@@ -1,0 +1,164 @@
+# Painel de produtos da Gráfica Sião (Pages CMS — https://app.pagescms.org)
+# Define os campos que aparecem no painel. Tudo é salvo em data/produtos.json,
+# que o site lê para montar a seção Produtos e a janela de pedido.
+
+media:
+  - name: fotos
+    label: Fotos dos produtos
+    input: assets/produtos
+    output: /assets/produtos
+    extensions: [jpg, jpeg, png, webp]
+    rename: safe
+
+content:
+  - name: catalogo
+    label: Produtos e preços
+    type: file
+    path: data/produtos.json
+    format: json
+    fields:
+      - name: produtos
+        label: Produtos
+        description: Cada item é um cartão na seção Produtos. A ordem aqui é a ordem no site.
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{nome} — {categoria}"
+        fields:
+          - name: nome
+            label: Nome do produto
+            type: string
+            required: true
+          - name: categoria
+            label: Categoria (aba do site)
+            type: select
+            required: true
+            options:
+              values: [Impresso comercial, Brindes, Embalagens, Comunicação visual]
+          - name: visivel
+            label: Mostrar no site
+            description: Desmarque para esconder o produto sem apagar.
+            type: boolean
+            default: true
+          - name: fotos
+            label: Fotos
+            description: A primeira é a principal. Use fotos em pé (formato vertical) ou quadradas.
+            type: image
+            options:
+              media: fotos
+              multiple:
+                max: 6
+          - name: descricao
+            label: Descrição curta
+            description: Aparece na janela de pedido. Ex. "Formato 9 × 5 cm, impressão colorida."
+            type: string
+          - name: quantidades
+            label: Tabela de quantidades e preços
+            description: Deixe vazia para o produto abrir como "sob orçamento". O preço é o valor total do pedido naquela quantidade.
+            type: object
+            list: true
+            fields:
+              - name: qtd
+                label: Quantidade (unidades)
+                type: number
+                required: true
+                options:
+                  min: 1
+              - name: preco
+                label: Preço total (R$)
+                type: number
+                required: true
+                options:
+                  min: 0
+          - name: opcoes
+            label: Opções (papel, acabamento, tamanho…)
+            description: Só valem se a tabela de quantidades estiver preenchida.
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{nome}"
+            fields:
+              - name: nome
+                label: Nome da opção
+                description: Ex. Material, Impressão, Acabamento.
+                type: string
+                required: true
+              - name: tipo
+                label: Como o cliente escolhe
+                type: select
+                required: true
+                options:
+                  values: [Escolher só um, Pode escolher vários]
+              - name: itens
+                label: Escolhas
+                description: Em "Escolher só um", a primeira escolha já vem marcada; deixe o acréscimo dela em 0.
+                type: object
+                list: true
+                fields:
+                  - name: nome
+                    label: Nome
+                    type: string
+                    required: true
+                  - name: acrescimo
+                    label: Acréscimo
+                    description: Use 0 se não muda o preço.
+                    type: number
+                    options:
+                      min: 0
+                  - name: modo
+                    label: Tipo de acréscimo
+                    type: select
+                    options:
+                      values: [Valor fixo (R$), Porcentagem do preço base (%), Por unidade (R$ cada)]
+
+      - name: categorias
+        label: Categorias (abas)
+        description: Nome, texto e cor da faixa de cada aba. Para criar uma categoria nova, peça para incluir o nome também na lista do campo "Categoria" do produto.
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{nome}"
+        fields:
+          - name: nome
+            label: Nome
+            type: string
+            required: true
+          - name: descricao
+            label: Texto da faixa
+            type: string
+          - name: cor
+            label: Cor da faixa
+            type: select
+            options:
+              values: [Vermelho, Azul, Cimento]
+
+      - name: condicoes
+        label: Condições (aparecem na janela de pedido)
+        type: object
+        fields:
+          - name: prazo
+            label: Prazo
+            type: string
+          - name: entrega
+            label: Entrega
+            type: string
+          - name: pagamento
+            label: Pagamento
+            type: string
+          - name: observacao
+            label: Aviso abaixo do valor
+            type: string
+
+      - name: whatsapp
+        label: WhatsApp que recebe os pedidos
+        description: Só números, com 55 e DDD. Ex. 5575981963281
+        type: string
+        required: true
+
+      - name: precos_de_exemplo
+        label: Os preços ainda são de exemplo
+        description: Enquanto marcado, a janela de pedido mostra o aviso "Preços de exemplo". Desmarque quando os preços forem os reais.
+        type: boolean

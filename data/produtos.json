@@ -1,127 +1,647 @@
 {
-  "_leia": "Produtos com preço montado no site. O nome precisa ser igual ao da lista da seção Produtos. Produtos que não estão aqui abrem como 'sob orçamento'. Acréscimos: modo 'R$' soma um valor ao pedido, '%' soma uma porcentagem do preço base, 'un' soma o valor por unidade. Mude 'precos_de_exemplo' para false quando os preços forem os reais.",
-  "precos_de_exemplo": true,
   "whatsapp": "5575981963281",
+  "precos_de_exemplo": true,
   "condicoes": {
     "prazo": "Produção em até 5 dias úteis após a aprovação da arte.",
     "entrega": "Retirada na gráfica ou entrega em Feira de Santana (combinada no WhatsApp).",
     "pagamento": "Pix, cartão ou link de pagamento.",
     "observacao": "Valor estimado. O preço final é confirmado após a conferência da arte."
   },
+  "categorias": [
+    {
+      "nome": "Impresso comercial",
+      "descricao": "A papelaria que apresenta sua empresa todos os dias — com papel, cor e acabamento à altura.",
+      "cor": "Vermelho"
+    },
+    {
+      "nome": "Brindes",
+      "descricao": "Presentes personalizados que mantêm sua marca na mesa do cliente o ano inteiro.",
+      "cor": "Cimento"
+    },
+    {
+      "nome": "Embalagens",
+      "descricao": "Embalagens que valorizam o produto e fazem do delivery uma experiência de marca.",
+      "cor": "Azul"
+    },
+    {
+      "nome": "Comunicação visual",
+      "descricao": "Sua marca em grande formato: fachadas, eventos, frotas e pontos de venda.",
+      "cor": "Vermelho"
+    }
+  ],
   "produtos": [
     {
       "nome": "Cartão de visita",
+      "categoria": "Impresso comercial",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1718670013921-2f144aba173a",
+        "https://images.unsplash.com/photo-1718670013988-c6e3edb92345",
+        "https://images.unsplash.com/photo-1599590984817-0c15f31b1fa5"
+      ],
       "descricao": "Formato 9 × 5 cm, impressão colorida de alta definição.",
       "quantidades": [
-        { "qtd": 250, "preco": 69 },
-        { "qtd": 500, "preco": 89 },
-        { "qtd": 1000, "preco": 129 },
-        { "qtd": 2000, "preco": 219 }
+        {
+          "qtd": 250,
+          "preco": 69
+        },
+        {
+          "qtd": 500,
+          "preco": 89
+        },
+        {
+          "qtd": 1000,
+          "preco": 129
+        },
+        {
+          "qtd": 2000,
+          "preco": 219
+        }
       ],
       "opcoes": [
-        { "nome": "Impressão", "tipo": "unica", "itens": [
-          { "nome": "Só frente", "acrescimo": 0 },
-          { "nome": "Frente e verso", "acrescimo": 30, "modo": "%" }
-        ]},
-        { "nome": "Papel", "tipo": "unica", "itens": [
-          { "nome": "Couchê 300g", "acrescimo": 0 },
-          { "nome": "Supremo 350g", "acrescimo": 15, "modo": "%" },
-          { "nome": "Reciclado 240g", "acrescimo": 20, "modo": "%" }
-        ]},
-        { "nome": "Acabamento", "tipo": "multipla", "itens": [
-          { "nome": "Laminação fosca", "acrescimo": 25, "modo": "%" },
-          { "nome": "Verniz localizado", "acrescimo": 40, "modo": "%" },
-          { "nome": "Cantos arredondados", "acrescimo": 25, "modo": "R$" }
-        ]}
-      ]
-    },
-    {
-      "nome": "Folder",
-      "descricao": "Formato A4 aberto, impressão colorida frente e verso.",
-      "quantidades": [
-        { "qtd": 500, "preco": 390 },
-        { "qtd": 1000, "preco": 520 },
-        { "qtd": 2500, "preco": 990 },
-        { "qtd": 5000, "preco": 1690 }
-      ],
-      "opcoes": [
-        { "nome": "Dobra", "tipo": "unica", "itens": [
-          { "nome": "1 dobra", "acrescimo": 0 },
-          { "nome": "2 dobras", "acrescimo": 40, "modo": "R$" }
-        ]},
-        { "nome": "Papel", "tipo": "unica", "itens": [
-          { "nome": "Couchê 115g", "acrescimo": 0 },
-          { "nome": "Couchê 150g", "acrescimo": 18, "modo": "%" }
-        ]},
-        { "nome": "Acabamento", "tipo": "multipla", "itens": [
-          { "nome": "Laminação fosca", "acrescimo": 30, "modo": "%" }
-        ]}
+        {
+          "nome": "Impressão",
+          "tipo": "Escolher só um",
+          "itens": [
+            {
+              "nome": "Só frente",
+              "acrescimo": 0,
+              "modo": "Valor fixo (R$)"
+            },
+            {
+              "nome": "Frente e verso",
+              "acrescimo": 30,
+              "modo": "Porcentagem do preço base (%)"
+            }
+          ]
+        },
+        {
+          "nome": "Papel",
+          "tipo": "Escolher só um",
+          "itens": [
+            {
+              "nome": "Couchê 300g",
+              "acrescimo": 0,
+              "modo": "Valor fixo (R$)"
+            },
+            {
+              "nome": "Supremo 350g",
+              "acrescimo": 15,
+              "modo": "Porcentagem do preço base (%)"
+            },
+            {
+              "nome": "Reciclado 240g",
+              "acrescimo": 20,
+              "modo": "Porcentagem do preço base (%)"
+            }
+          ]
+        },
+        {
+          "nome": "Acabamento",
+          "tipo": "Pode escolher vários",
+          "itens": [
+            {
+              "nome": "Laminação fosca",
+              "acrescimo": 25,
+              "modo": "Porcentagem do preço base (%)"
+            },
+            {
+              "nome": "Verniz localizado",
+              "acrescimo": 40,
+              "modo": "Porcentagem do preço base (%)"
+            },
+            {
+              "nome": "Cantos arredondados",
+              "acrescimo": 25,
+              "modo": "Valor fixo (R$)"
+            }
+          ]
+        }
       ]
     },
     {
       "nome": "Crachá",
+      "categoria": "Impresso comercial",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1769029269011-b32f787c288c",
+        "https://images.unsplash.com/photo-1762637119322-0aeb996bc832"
+      ],
       "descricao": "Cartão em PVC no tamanho padrão, impressão colorida.",
       "quantidades": [
-        { "qtd": 10, "preco": 120 },
-        { "qtd": 25, "preco": 250 },
-        { "qtd": 50, "preco": 450 },
-        { "qtd": 100, "preco": 800 }
+        {
+          "qtd": 10,
+          "preco": 120
+        },
+        {
+          "qtd": 25,
+          "preco": 250
+        },
+        {
+          "qtd": 50,
+          "preco": 450
+        },
+        {
+          "qtd": 100,
+          "preco": 800
+        }
       ],
       "opcoes": [
-        { "nome": "Impressão", "tipo": "unica", "itens": [
-          { "nome": "Só frente", "acrescimo": 0 },
-          { "nome": "Frente e verso", "acrescimo": 25, "modo": "%" }
-        ]},
-        { "nome": "Acessórios", "tipo": "multipla", "itens": [
-          { "nome": "Cordão personalizado", "acrescimo": 4.5, "modo": "un" },
-          { "nome": "Presilha jacaré", "acrescimo": 1, "modo": "un" }
-        ]}
+        {
+          "nome": "Impressão",
+          "tipo": "Escolher só um",
+          "itens": [
+            {
+              "nome": "Só frente",
+              "acrescimo": 0,
+              "modo": "Valor fixo (R$)"
+            },
+            {
+              "nome": "Frente e verso",
+              "acrescimo": 25,
+              "modo": "Porcentagem do preço base (%)"
+            }
+          ]
+        },
+        {
+          "nome": "Acessórios",
+          "tipo": "Pode escolher vários",
+          "itens": [
+            {
+              "nome": "Cordão personalizado",
+              "acrescimo": 4.5,
+              "modo": "Por unidade (R$ cada)"
+            },
+            {
+              "nome": "Presilha jacaré",
+              "acrescimo": 1,
+              "modo": "Por unidade (R$ cada)"
+            }
+          ]
+        }
       ]
     },
     {
-      "nome": "Adesivo vinil",
-      "descricao": "Vinil branco resistente à água, ideal para embalagens e brindes.",
+      "nome": "Calendários",
+      "categoria": "Impresso comercial",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1611988615248-5d4f0b9ac31e",
+        "https://images.unsplash.com/photo-1578625155481-7bc40a6481b6",
+        "https://images.unsplash.com/photo-1769596722510-b92780d03424"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Folder",
+      "categoria": "Impresso comercial",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1790345835845-bda0548978b2",
+        "https://images.unsplash.com/photo-1712640365578-fbdf50b55ddc",
+        "https://images.unsplash.com/photo-1422036306541-00138cae4dbc"
+      ],
+      "descricao": "Formato A4 aberto, impressão colorida frente e verso.",
       "quantidades": [
-        { "qtd": 100, "preco": 59 },
-        { "qtd": 250, "preco": 99 },
-        { "qtd": 500, "preco": 159 },
-        { "qtd": 1000, "preco": 259 }
+        {
+          "qtd": 500,
+          "preco": 390
+        },
+        {
+          "qtd": 1000,
+          "preco": 520
+        },
+        {
+          "qtd": 2500,
+          "preco": 990
+        },
+        {
+          "qtd": 5000,
+          "preco": 1690
+        }
       ],
       "opcoes": [
-        { "nome": "Tamanho", "tipo": "unica", "itens": [
-          { "nome": "5 × 5 cm", "acrescimo": 0 },
-          { "nome": "7 × 7 cm", "acrescimo": 40, "modo": "%" },
-          { "nome": "10 × 10 cm", "acrescimo": 90, "modo": "%" }
-        ]},
-        { "nome": "Corte", "tipo": "unica", "itens": [
-          { "nome": "Reto", "acrescimo": 0 },
-          { "nome": "Especial (contorno da arte)", "acrescimo": 25, "modo": "%" }
-        ]},
-        { "nome": "Acabamento", "tipo": "multipla", "itens": [
-          { "nome": "Laminação brilho", "acrescimo": 20, "modo": "%" }
-        ]}
+        {
+          "nome": "Dobra",
+          "tipo": "Escolher só um",
+          "itens": [
+            {
+              "nome": "1 dobra",
+              "acrescimo": 0,
+              "modo": "Valor fixo (R$)"
+            },
+            {
+              "nome": "2 dobras",
+              "acrescimo": 40,
+              "modo": "Valor fixo (R$)"
+            }
+          ]
+        },
+        {
+          "nome": "Papel",
+          "tipo": "Escolher só um",
+          "itens": [
+            {
+              "nome": "Couchê 115g",
+              "acrescimo": 0,
+              "modo": "Valor fixo (R$)"
+            },
+            {
+              "nome": "Couchê 150g",
+              "acrescimo": 18,
+              "modo": "Porcentagem do preço base (%)"
+            }
+          ]
+        },
+        {
+          "nome": "Acabamento",
+          "tipo": "Pode escolher vários",
+          "itens": [
+            {
+              "nome": "Laminação fosca",
+              "acrescimo": 30,
+              "modo": "Porcentagem do preço base (%)"
+            }
+          ]
+        }
       ]
+    },
+    {
+      "nome": "Pastas",
+      "categoria": "Impresso comercial",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1539355168476-3e8c4a84f447",
+        "https://images.unsplash.com/photo-1654610285929-a1b63280dd60"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Timbrados",
+      "categoria": "Impresso comercial",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1542120926-32f3559e9473",
+        "https://images.unsplash.com/photo-1667201081117-99e1d9aecd76"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
     },
     {
       "nome": "Banner",
+      "categoria": "Impresso comercial",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1766384093125-f00a4eb8a392",
+        "https://images.unsplash.com/photo-1617355405361-29f0f0a3d737"
+      ],
       "descricao": "Lona 440g com impressão colorida de alta resolução.",
       "quantidades": [
-        { "qtd": 1, "preco": 45 },
-        { "qtd": 2, "preco": 88 },
-        { "qtd": 5, "preco": 210 },
-        { "qtd": 10, "preco": 400 }
+        {
+          "qtd": 1,
+          "preco": 45
+        },
+        {
+          "qtd": 2,
+          "preco": 88
+        },
+        {
+          "qtd": 5,
+          "preco": 210
+        },
+        {
+          "qtd": 10,
+          "preco": 400
+        }
       ],
       "opcoes": [
-        { "nome": "Tamanho", "tipo": "unica", "itens": [
-          { "nome": "60 × 90 cm", "acrescimo": 0 },
-          { "nome": "80 × 120 cm", "acrescimo": 35, "modo": "un" },
-          { "nome": "100 × 150 cm", "acrescimo": 70, "modo": "un" }
-        ]},
-        { "nome": "Acabamento", "tipo": "multipla", "itens": [
-          { "nome": "Bastão e cordão", "acrescimo": 8, "modo": "un" },
-          { "nome": "Ilhós", "acrescimo": 5, "modo": "un" }
-        ]}
+        {
+          "nome": "Tamanho",
+          "tipo": "Escolher só um",
+          "itens": [
+            {
+              "nome": "60 × 90 cm",
+              "acrescimo": 0,
+              "modo": "Valor fixo (R$)"
+            },
+            {
+              "nome": "80 × 120 cm",
+              "acrescimo": 35,
+              "modo": "Por unidade (R$ cada)"
+            },
+            {
+              "nome": "100 × 150 cm",
+              "acrescimo": 70,
+              "modo": "Por unidade (R$ cada)"
+            }
+          ]
+        },
+        {
+          "nome": "Acabamento",
+          "tipo": "Pode escolher vários",
+          "itens": [
+            {
+              "nome": "Bastão e cordão",
+              "acrescimo": 8,
+              "modo": "Por unidade (R$ cada)"
+            },
+            {
+              "nome": "Ilhós",
+              "acrescimo": 5,
+              "modo": "Por unidade (R$ cada)"
+            }
+          ]
+        }
       ]
+    },
+    {
+      "nome": "Faixa",
+      "categoria": "Impresso comercial",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1730198125410-4c19f786fc11",
+        "https://images.unsplash.com/photo-1776437209490-7321478ebb18"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Agenda",
+      "categoria": "Brindes",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1783099779469-5b02ae272c09",
+        "https://images.unsplash.com/photo-1647559709298-c0e3dcb47092"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Calendário de mesa",
+      "categoria": "Brindes",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1769596722510-b92780d03424",
+        "https://images.unsplash.com/photo-1611988615248-5d4f0b9ac31e"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Calendário de parede",
+      "categoria": "Brindes",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1578625155481-7bc40a6481b6",
+        "https://images.unsplash.com/photo-1770250959829-de36726e99c4"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Mousepad",
+      "categoria": "Brindes",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1629429408209-1f912961dbd8",
+        "https://images.unsplash.com/photo-1631098983935-5363b8e50edb"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Caderno",
+      "categoria": "Brindes",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1531346878377-a5be20888e57",
+        "https://images.unsplash.com/photo-1647559709298-c0e3dcb47092"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Caneta",
+      "categoria": "Brindes",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1455390582262-044cdead277a",
+        "https://images.unsplash.com/photo-1760720962373-60841d9b2c8a"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Caixa de anote",
+      "categoria": "Brindes",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1580934174026-8142803ebb5b",
+        "https://images.unsplash.com/photo-1759868937753-34859b641bc1"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Caderneta",
+      "categoria": "Brindes",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1591195852468-03a01d1375d6",
+        "https://images.unsplash.com/photo-1651761409007-0395097c269d"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Sacola",
+      "categoria": "Embalagens",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1637903921530-f1135c99b8d5",
+        "https://images.unsplash.com/photo-1760565030282-8fb986077e0d",
+        "https://images.unsplash.com/photo-1677753727712-c79ce4c420c1"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Saco delivery",
+      "categoria": "Embalagens",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1616429368325-d5d7542b0ec3",
+        "https://images.unsplash.com/photo-1561715276-a2d087060f1d"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Caixa p/ hot dog",
+      "categoria": "Embalagens",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1638368593249-7cadb261e8b3",
+        "https://images.unsplash.com/photo-1776260486226-11dabfacf5f2"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Caixa p/ batata frita",
+      "categoria": "Embalagens",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d",
+        "https://images.unsplash.com/photo-1768215610440-fcb9631c7ee2"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Caixa p/ hambúrguer",
+      "categoria": "Embalagens",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1615380547239-45634678986c",
+        "https://images.unsplash.com/photo-1635530865047-cdd83986fc55"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Adesivo vinil",
+      "categoria": "Comunicação visual",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1774803543112-828c3ac44cea",
+        "https://images.unsplash.com/photo-1625768376503-68d2495d78c5",
+        "https://images.unsplash.com/photo-1540651810471-5699df74834f"
+      ],
+      "descricao": "Vinil branco resistente à água, ideal para embalagens e brindes.",
+      "quantidades": [
+        {
+          "qtd": 100,
+          "preco": 59
+        },
+        {
+          "qtd": 250,
+          "preco": 99
+        },
+        {
+          "qtd": 500,
+          "preco": 159
+        },
+        {
+          "qtd": 1000,
+          "preco": 259
+        }
+      ],
+      "opcoes": [
+        {
+          "nome": "Tamanho",
+          "tipo": "Escolher só um",
+          "itens": [
+            {
+              "nome": "5 × 5 cm",
+              "acrescimo": 0,
+              "modo": "Valor fixo (R$)"
+            },
+            {
+              "nome": "7 × 7 cm",
+              "acrescimo": 40,
+              "modo": "Porcentagem do preço base (%)"
+            },
+            {
+              "nome": "10 × 10 cm",
+              "acrescimo": 90,
+              "modo": "Porcentagem do preço base (%)"
+            }
+          ]
+        },
+        {
+          "nome": "Corte",
+          "tipo": "Escolher só um",
+          "itens": [
+            {
+              "nome": "Reto",
+              "acrescimo": 0,
+              "modo": "Valor fixo (R$)"
+            },
+            {
+              "nome": "Especial (contorno da arte)",
+              "acrescimo": 25,
+              "modo": "Porcentagem do preço base (%)"
+            }
+          ]
+        },
+        {
+          "nome": "Acabamento",
+          "tipo": "Pode escolher vários",
+          "itens": [
+            {
+              "nome": "Laminação brilho",
+              "acrescimo": 20,
+              "modo": "Porcentagem do preço base (%)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "Adesivo troca de óleo",
+      "categoria": "Comunicação visual",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1591844480704-e81058db777f",
+        "https://images.unsplash.com/photo-1685553334511-b77b0a7ca676"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Faixa",
+      "categoria": "Comunicação visual",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1776437209490-7321478ebb18",
+        "https://images.unsplash.com/photo-1730198125410-4c19f786fc11"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
+    },
+    {
+      "nome": "Lona com ilhós",
+      "categoria": "Comunicação visual",
+      "visivel": true,
+      "fotos": [
+        "https://images.unsplash.com/photo-1780361974643-93e06a0b0b0b",
+        "https://images.unsplash.com/photo-1533069027836-fa937181a8ce"
+      ],
+      "descricao": "",
+      "quantidades": [],
+      "opcoes": []
     }
   ]
 }
